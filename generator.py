@@ -99,7 +99,7 @@ def build_edition(send_telegram=True):
             if source_counts[src] <= MAX_PER_SOURCE:
                 balanced_news.append(s)
         news_to_process = balanced_news[:MAX_STORIES_PER_DOMAIN]
-        x_to_process = x_stories_raw[:8]
+        x_to_process = x_stories_raw[:9]
         gh_to_process = gh_deduped[:8]
 
         total = len(news_to_process) + len(x_to_process) + len(gh_to_process)

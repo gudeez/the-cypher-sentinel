@@ -54,9 +54,9 @@ DOMAINS = {
             ],
         },
         "x_accounts": {
-            "Security": ["briankrebs", "SwiftOnSecurity", "troyhunt"],
-            "Privacy": ["EFF", "signalapp", "torproject"],
-            "Research": ["ProjectZeroBugs", "MalwareTechBlog", "hasherezade"],
+            "Security": ["briankrebs", "SwiftOnSecurity", "troyhunt", "GossiTheDog", "thegrugq", "taviso"],
+            "Privacy": ["EFF", "signalapp", "torproject", "ProtonMail", "evacide"],
+            "Research": ["ProjectZeroBugs", "MalwareTechBlog", "hasherezade", "NCCGroupInfosec"],
         },
     },
     "ai": {
@@ -85,7 +85,7 @@ DOMAINS = {
             ],
         },
         "x_accounts": {
-            "AI": ["AnthropicAI", "OpenAI", "GoogleDeepMind", "karpathy", "sama"],
+            "AI": ["AnthropicAI", "OpenAI", "GoogleDeepMind", "karpathy", "sama", "ylecun", "DrJimFan", "huggingface", "MistralAI"],
         },
     },
     "blockchain": {
@@ -120,9 +120,9 @@ DOMAINS = {
             ],
         },
         "x_accounts": {
-            "Blockchain": ["VitalikButerin", "CoinDesk", "punk6529"],
-            "Bitcoin": ["saylor", "DocumentingBTC", "BitcoinMagazine"],
-            "DeFi": ["DefiLlama", "UniswapProtocol", "CurveFinance"],
+            "Blockchain": ["VitalikButerin", "CoinDesk", "punk6529", "aantonop", "ErikVoorhees"],
+            "Bitcoin": ["saylor", "DocumentingBTC", "BitcoinMagazine", "adam3us"],
+            "DeFi": ["DefiLlama", "UniswapProtocol", "CurveFinance", "AaveAave"],
         },
     },
 }
