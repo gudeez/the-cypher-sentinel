@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 from config import GITHUB_TOPICS, SEEN_FILE
 import json
 
+MIN_STARS = 100
+
 
 def _load_seen():
     if SEEN_FILE.exists():
@@ -49,7 +51,11 @@ def fetch_trending():
                 continue
 
             stars_el = article.select_one("[href$='/stargazers']")
-            stars = stars_el.get_text(strip=True).replace(",", "") if stars_el else "0"
+            stars_text = stars_el.get_text(strip=True).replace(",", "") if stars_el else "0"
+            stars = int(stars_text) if stars_text.isdigit() else 0
+
+            if stars < MIN_STARS:
+                continue
 
             lang_el = article.select_one("[itemprop='programmingLanguage']")
             language = lang_el.get_text(strip=True) if lang_el else ""
@@ -59,7 +65,7 @@ def fetch_trending():
                 "url": url,
                 "source": "GitHub Trending",
                 "summary": description,
-                "stars": stars,
+                "stars": str(stars),
                 "language": language,
                 "type": "github",
             })
@@ -70,20 +76,20 @@ def fetch_trending():
 
 
 def fetch_notable_repos():
-    """Find newly popular security repos via GitHub search API."""
+    """Find popular security repos via GitHub search API."""
     seen = _load_seen()
     stories = []
-    cutoff = (datetime.now(timezone.utc) - timedelta(days=3)).strftime("%Y-%m-%d")
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=14)).strftime("%Y-%m-%d")
 
     for topic in GITHUB_TOPICS:
         try:
             resp = requests.get(
                 "https://api.github.com/search/repositories",
                 params={
-                    "q": f"{topic} created:>{cutoff}",
+                    "q": f"{topic} stars:>={MIN_STARS} pushed:>{cutoff}",
                     "sort": "stars",
                     "order": "desc",
-                    "per_page": 15,
+                    "per_page": 30,
                 },
                 timeout=15,
                 headers={"User-Agent": "TheCipherSentinel/1.0"},
@@ -94,13 +100,13 @@ def fetch_notable_repos():
                 url = repo["html_url"]
                 if url in seen:
                     continue
-                if repo["stargazers_count"] < 10:
+                if repo["stargazers_count"] < MIN_STARS:
                     continue
 
                 stories.append({
                     "title": repo["full_name"],
                     "url": url,
-                    "source": "GitHub New",
+                    "source": "GitHub Notable",
                     "summary": repo.get("description", "") or "",
                     "stars": str(repo["stargazers_count"]),
                     "language": repo.get("language", "") or "",
