@@ -1,0 +1,7 @@
+requests
+beautifulsoup4
+feedparser
+jinja2
+scrapling
+python-telegram-bot
+schedule

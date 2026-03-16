@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cipher Sentinel — {{ date }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e8e0d0;
+            --text: #2c1810;
+            --paper: #e8e0d0;
+            --paper-border: #8a7a5a;
+            --paper-shadow: rgba(0,0,0,0.15);
+            --accent: #0a3d0a;
+            --muted: #5a6a4a;
+            --rule: #8a7a5a;
+            --editorial-bg: #ddd5c0;
+            --card-border: #8a7a5a;
+            --btn-bg: #1a1a1a;
+            --btn-text: #c8d8c0;
+            --btn-hover: #2a3a2a;
+            --masthead-bg: #1a1a1a;
+            --masthead-title: #c8d8c0;
+            --masthead-subtitle: #7a9a6a;
+            --masthead-meta: #8a9a7a;
+            --masthead-border: #0a3d0a;
+            --editorial-border: #0a3d0a;
+            --editorial-heading: #0a3d0a;
+            --link-color: #0a3d0a;
+            --link-hover: #1a5d1a;
+            --section-heading: #0a3d0a;
+            --repo-name-link: #0a3d0a;
+            --repo-summary: #5a6a4a;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0e0e0e;
+            --text: #c8d0b8;
+            --paper: #181818;
+            --paper-border: #2a3a2a;
+            --paper-shadow: rgba(0,0,0,0.6);
+            --accent: #4a8a4a;
+            --muted: #6a7a5a;
+            --rule: #2a3a2a;
+            --editorial-bg: #1e261e;
+            --card-border: #2a3a2a;
+            --btn-bg: #c8d8c0;
+            --btn-text: #0e0e0e;
+            --btn-hover: #a8b8a0;
+            --masthead-bg: #0a0a0a;
+            --masthead-title: #8aba8a;
+            --masthead-subtitle: #4a7a4a;
+            --masthead-meta: #4a6a4a;
+            --masthead-border: #1a3a1a;
+            --editorial-border: #2a4a2a;
+            --editorial-heading: #8aba8a;
+            --link-color: #6a9a6a;
+            --link-hover: #8aba8a;
+            --section-heading: #8aba8a;
+            --repo-name-link: #6a9a6a;
+            --repo-summary: #8a9a7a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Libre Baskerville', 'Times New Roman', serif;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .paper {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 40px 50px;
+            background: var(--paper);
+            border: 1px solid var(--paper-border);
+            box-shadow: 0 2px 30px var(--paper-shadow);
+        }
+
+        /* --- Masthead --- */
+        .masthead {
+            text-align: center;
+            padding-bottom: 15px;
+            margin-bottom: 5px;
+            background: var(--masthead-bg);
+            margin: -40px -50px 15px -50px;
+            padding: 25px 50px 15px 50px;
+            border-bottom: 4px double var(--masthead-border);
+        }
+
+        .masthead-rule-top {
+            border: none;
+            border-top: 1px solid var(--masthead-border);
+            margin-bottom: 8px;
+        }
+
+        .masthead h1 {
+            font-family: 'UnifrakturMaguntia', 'Playfair Display', serif;
+            font-size: 64px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            line-height: 1.1;
+            color: var(--masthead-title);
+        }
+
+        .masthead .subtitle {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            font-size: 14px;
+            margin: 5px 0;
+            color: var(--masthead-subtitle);
+        }
+
+        .masthead-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 8px;
+            color: var(--masthead-meta);
+        }
+
+        /* --- Ornamental Rules --- */
+        .ornament {
+            text-align: center;
+            margin: 15px 0;
+            font-size: 18px;
+            color: var(--muted);
+        }
+
+        .thick-rule {
+            border: none;
+            border-top: 3px solid var(--masthead-border);
+            margin: 15px 0;
+        }
+
+        .thin-rule {
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 12px 0;
+        }
+
+        /* --- Editorial --- */
+        .editorial {
+            border: 2px solid var(--editorial-border);
+            padding: 20px 25px;
+            margin: 20px 0;
+            background: var(--editorial-bg);
+        }
+
+        .editorial h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: center;
+            margin-bottom: 12px;
+            color: var(--editorial-heading);
+        }
+
+        .editorial p {
+            font-style: italic;
+            text-align: justify;
+        }
+
+        /* --- Story Sections --- */
+        .lead-section {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .lead-story .headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 10px;
+        }
+
+        .second-story .headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .story-source {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .story-body {
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .story-link {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 12px;
+            color: var(--link-color);
+            text-decoration: none;
+            font-style: italic;
+        }
+
+        .story-link:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        /* --- Column Grid --- */
+        .three-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 25px;
+            margin: 20px 0;
+        }
+
+        .col-story .headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 8px;
+        }
+
+        .col-story .story-body {
+            font-size: 13.5px;
+        }
+
+        .col-divider {
+            border-left: 1px solid var(--rule);
+            padding-left: 25px;
+        }
+
+        /* --- GitHub / Arsenal Section --- */
+        .github-section {
+            margin: 25px 0;
+        }
+
+        .github-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--section-heading);
+        }
+
+        .github-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .repo-card {
+            border: 1px solid var(--card-border);
+            padding: 15px;
+            background: var(--editorial-bg);
+        }
+
+        .repo-card .repo-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .repo-card .repo-name a {
+            color: var(--repo-name-link);
+            text-decoration: none;
+        }
+
+        .repo-card .repo-name a:hover {
+            text-decoration: underline;
+        }
+
+        .repo-meta {
+            font-size: 11px;
+            color: var(--muted);
+            margin: 5px 0;
+        }
+
+        .repo-desc {
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 4px double var(--masthead-border);
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 1px;
+        }
+
+        /* --- Read Aloud Button --- */
+        .read-aloud-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--btn-bg);
+            color: var(--btn-text);
+            border: 2px solid var(--muted);
+            padding: 12px 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 100;
+            letter-spacing: 1px;
+            transition: background 0.2s;
+        }
+
+        .read-aloud-btn:hover {
+            background: var(--btn-hover);
+        }
+
+        /* --- Theme Toggle --- */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--btn-bg);
+            color: var(--btn-text);
+            border: 2px solid var(--muted);
+            padding: 10px 16px;
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 100;
+            transition: background 0.2s;
+            line-height: 1;
+        }
+
+        .theme-toggle:hover {
+            background: var(--btn-hover);
+        }
+
+        .read-aloud-btn.playing {
+            background: #8b0000;
+        }
+
+        /* --- Print --- */
+        @media print {
+            body { background: white; }
+            .paper { box-shadow: none; border: none; margin: 0; padding: 20px; }
+            .masthead { background: white; }
+            .masthead h1 { color: #1a1a1a; }
+            .masthead .subtitle { color: #333; }
+            .masthead-meta { color: #333; }
+        }
+
+        /* --- Mobile --- */
+        @media (max-width: 700px) {
+            .paper { padding: 20px 15px; margin: 10px; }
+            .masthead { margin: -20px -15px 15px -15px; padding: 15px 15px 10px 15px; }
+            .masthead h1 { font-size: 36px; }
+            .lead-section { grid-template-columns: 1fr; }
+            .three-col { grid-template-columns: 1fr; }
+            .github-grid { grid-template-columns: 1fr; }
+            .col-divider { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 15px; }
+            .lead-story .headline { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="paper">
+        <!-- Masthead -->
+        <header class="masthead">
+            <hr class="masthead-rule-top">
+            <h1>The Cipher Sentinel</h1>
+            <div class="subtitle">&ldquo;Guarding the Gates of the Digital Dominion&rdquo;</div>
+            <div class="masthead-meta">
+                <span>Vol. I &middot; No. {{ edition_number }}</span>
+                <span>{{ date_fancy }}</span>
+                <span>Price: Your Vigilance</span>
+            </div>
+        </header>
+
+        <!-- Editor's Column -->
+        {% if editorial %}
+        <div class="editorial">
+            <h2>&diams; Editor&rsquo;s Column &diams;</h2>
+            <p>{{ editorial }}</p>
+        </div>
+        {% endif %}
+
+        <!-- Lead Stories -->
+        {% if news_stories|length > 0 %}
+        <hr class="thick-rule">
+        <div class="lead-section">
+            <div class="lead-story">
+                <div class="story-source">{{ news_stories[0].source }}</div>
+                <div class="headline">{{ news_stories[0].headline }}</div>
+                <div class="story-body">{{ news_stories[0].body }}</div>
+                <a class="story-link" href="{{ news_stories[0].url }}" target="_blank">Continue reading &rarr;</a>
+            </div>
+            {% if news_stories|length > 1 %}
+            <div class="second-story" style="border-left: 1px solid var(--rule); padding-left: 30px;">
+                <div class="story-source">{{ news_stories[1].source }}</div>
+                <div class="headline">{{ news_stories[1].headline }}</div>
+                <div class="story-body">{{ news_stories[1].body }}</div>
+                <a class="story-link" href="{{ news_stories[1].url }}" target="_blank">Continue reading &rarr;</a>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <!-- Remaining News Stories -->
+        {% if news_stories|length > 2 %}
+        <hr class="thick-rule">
+        <div class="three-col">
+            {% for story in news_stories[2:] %}
+            <div class="col-story {% if not loop.first %}col-divider{% endif %}">
+                <div class="story-source">{{ story.source }}</div>
+                <div class="headline">{{ story.headline }}</div>
+                <div class="story-body">{{ story.body }}</div>
+                <a class="story-link" href="{{ story.url }}" target="_blank">Read more &rarr;</a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- X/Twitter Dispatches -->
+        {% if x_stories|length > 0 %}
+        <hr class="thick-rule">
+        <div class="github-section">
+            <h2>&diams; Intercepted Dispatches &diams;</h2>
+            <div class="three-col">
+                {% for story in x_stories %}
+                <div class="col-story {% if not loop.first %}col-divider{% endif %}">
+                    <div class="story-source">{{ story.source }}</div>
+                    <div class="headline">{{ story.headline }}</div>
+                    <div class="story-body">{{ story.body }}</div>
+                    <a class="story-link" href="{{ story.url }}" target="_blank">View dispatch &rarr;</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- GitHub / Arsenal & Armory -->
+        {% if github_stories|length > 0 %}
+        <hr class="thick-rule">
+        <div class="github-section">
+            <h2>&diams; Arsenal &amp; Armory &diams;</h2>
+            <div class="github-grid">
+                {% for repo in github_stories %}
+                <div class="repo-card">
+                    <div class="repo-name"><a href="{{ repo.url }}" target="_blank">{{ repo.title }}</a></div>
+                    <div class="repo-meta">{{ repo.stars }} stars &middot; {{ repo.language }}</div>
+                    {% if repo.summary %}<div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">{{ repo.summary }}</div>{% endif %}
+                    <div class="repo-desc">{{ repo.body }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="ornament">&mdash; &diams; &mdash;</div>
+            Printed by Automaton &middot; Powered by Qwen 3.5 &middot; &copy; {{ year }} The Cipher Sentinel
+        </div>
+    </div>
+
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle dark mode">
+        &#9790;
+    </button>
+
+    <button class="read-aloud-btn" id="readAloudBtn" onclick="toggleReadAloud()">
+        Read Aloud
+    </button>
+
+    <script>
+    // --- Theme ---
+    (function() {
+        const saved = localStorage.getItem('theme');
+        if (saved) {
+            document.documentElement.setAttribute('data-theme', saved);
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+        updateToggleIcon();
+    })();
+
+    function updateToggleIcon() {
+        const btn = document.getElementById('themeToggle');
+        if (btn) {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            btn.innerHTML = isDark ? '&#9788;' : '&#9790;';
+            btn.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+        }
+    }
+
+    function toggleTheme() {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const next = isDark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateToggleIcon();
+    }
+    </script>
+
+    <script>
+    let isPlaying = false;
+    let utterance = null;
+
+    function getAllText() {
+        const paper = document.querySelector('.paper');
+        const sections = [];
+
+        const editorial = paper.querySelector('.editorial p');
+        if (editorial) sections.push("Editor's Column. " + editorial.textContent);
+
+        paper.querySelectorAll('.headline').forEach(h => {
+            const parent = h.closest('.lead-story, .second-story, .col-story');
+            if (parent) {
+                const source = parent.querySelector('.story-source');
+                const body = parent.querySelector('.story-body');
+                let text = '';
+                if (source) text += source.textContent + '. ';
+                text += h.textContent + '. ';
+                if (body) text += body.textContent;
+                sections.push(text);
+            }
+        });
+
+        paper.querySelectorAll('.repo-card').forEach(card => {
+            const name = card.querySelector('.repo-name');
+            const meta = card.querySelector('.repo-meta');
+            const descs = card.querySelectorAll('.repo-desc');
+            let text = 'From the Arsenal: ';
+            if (name) text += name.textContent + '. ';
+            if (meta) text += meta.textContent + '. ';
+            descs.forEach(d => text += d.textContent + '. ');
+            sections.push(text);
+        });
+
+        return sections.join('\n\n');
+    }
+
+    function toggleReadAloud() {
+        const btn = document.getElementById('readAloudBtn');
+
+        if (isPlaying) {
+            speechSynthesis.cancel();
+            isPlaying = false;
+            btn.textContent = 'Read Aloud';
+            btn.classList.remove('playing');
+            return;
+        }
+
+        const text = getAllText();
+        utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 1.0;
+        utterance.pitch = 0.9;
+
+        // Prefer a British English voice for the Victorian vibe
+        const voices = speechSynthesis.getVoices();
+        const british = voices.find(v => v.lang === 'en-GB') || voices.find(v => v.lang.startsWith('en'));
+        if (british) utterance.voice = british;
+
+        utterance.onend = () => {
+            isPlaying = false;
+            btn.textContent = 'Read Aloud';
+            btn.classList.remove('playing');
+        };
+
+        speechSynthesis.speak(utterance);
+        isPlaying = true;
+        btn.textContent = 'Stop Reading';
+        btn.classList.add('playing');
+    }
+
+    // Preload voices
+    speechSynthesis.getVoices();
+    </script>
+</body>
+</html>

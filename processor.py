@@ -1,0 +1,113 @@
+import requests
+import time
+from config import OLLAMA_URL, OLLAMA_MODEL
+
+
+def _generate(prompt, max_tokens=300):
+    """Call Ollama generate endpoint."""
+    for attempt in range(3):
+        try:
+            resp = requests.post(
+                f"{OLLAMA_URL}/api/generate",
+                json={
+                    "model": OLLAMA_MODEL,
+                    "prompt": prompt,
+                    "stream": False,
+                    "options": {
+                        "num_ctx": 4096,
+                        "num_predict": max_tokens,
+                        "temperature": 0.7,
+                    },
+                },
+                timeout=120,
+            )
+            data = resp.json()
+            return data.get("response", "").strip()
+        except Exception as e:
+            print(f"[Ollama] Attempt {attempt + 1} failed: {e}")
+            if attempt < 2:
+                time.sleep(3)
+    return ""
+
+
+def summarize(story):
+    """Summarize a story in Victorian newspaper voice."""
+    source_note = ""
+    if story.get("type") == "x_post":
+        source_note = f"This is a post from X/Twitter by {story.get('source', 'unknown')}."
+    elif story.get("type") == "github":
+        source_note = f"This is a GitHub repository. Stars: {story.get('stars', 'N/A')}. Language: {story.get('language', 'N/A')}."
+
+    prompt = f"""/no_think
+You are the editor of "The Cipher Sentinel," a newspaper from the 1880s that covers cybersecurity and privacy news. Write a 2-3 sentence summary of this item in the voice of a Victorian-era journalist. Be informative but colorful. Do not use modern slang.
+
+Title: {story['title']}
+Summary: {story.get('summary', 'No details available.')}
+Source: {story.get('source', 'Unknown')}
+{source_note}
+
+Write ONLY the summary, no preamble:"""
+
+    return _generate(prompt, max_tokens=200)
+
+
+def generate_headline(story):
+    """Generate a dramatic 1880s-style headline."""
+    prompt = f"""/no_think
+You MUST rewrite this headline completely in the dramatic style of an 1880s newspaper. Do NOT repeat the original headline. Make it sensational, Victorian, and punchy. Use title case. Keep it under 15 words.
+
+Original: {story['title']}
+Context: {story.get('summary', '')[:200]}
+
+Example rewrites:
+- "Major data breach at hospital" -> "Nefarious Scoundrels Plunder Hospital Ledgers in Audacious Digital Burglary"
+- "New encryption standard released" -> "Impenetrable Cipher Engine Unveiled to Thunderous Acclaim"
+- "Ransomware gang arrested" -> "Scotland Yard of the Ether Nets Notorious Band of Digital Highwaymen"
+
+Your dramatic Victorian rewrite:"""
+
+    result = _generate(prompt, max_tokens=50)
+    # Clean up - remove quotes, extra whitespace
+    result = result.strip('"\'').strip()
+    # If the LLM just returned the original, flag it
+    if not result or result.lower() == story["title"].lower():
+        return f"Most Alarming: {story['title']}"
+    return result
+
+
+def editorialize(stories):
+    """Write an editor's column summarizing the day's themes."""
+    briefs = []
+    for i, s in enumerate(stories[:8], 1):
+        briefs.append(f"{i}. {s['title']}: {s.get('summary', '')[:150]}")
+    stories_text = "\n".join(briefs)
+
+    prompt = f"""/no_think
+You are the editor-in-chief of "The Cipher Sentinel," an 1880s newspaper covering cybersecurity and digital privacy. Write a short Editor's Column (3-4 sentences) identifying the overarching themes in today's stories. Write in a Victorian editorial voice — authoritative, slightly pompous, but genuinely concerned about the security of the digital dominion.
+
+Today's stories:
+{stories_text}
+
+Write ONLY the editorial column, no title or preamble:"""
+
+    return _generate(prompt, max_tokens=300)
+
+
+def generate_telegram_digest(stories, editorial):
+    """Generate a concise Telegram-friendly digest."""
+    briefs = []
+    for s in stories[:8]:
+        briefs.append(f"- {s['title']}: {s.get('summary', '')[:100]}")
+    stories_text = "\n".join(briefs)
+
+    prompt = f"""/no_think
+You are writing a brief Telegram message digest for "The Cipher Sentinel" cybersecurity newsletter. Summarize the top stories in a punchy, readable format. Use emoji sparingly. Keep it under 300 words. Include the most important 5-6 stories.
+
+Editor's take: {editorial}
+
+Stories:
+{stories_text}
+
+Write the Telegram message:"""
+
+    return _generate(prompt, max_tokens=400)
