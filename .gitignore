@@ -3,5 +3,4 @@ __pycache__/
 *.pyc
 data/x_cookies.json
 data/seen.json
-editions/*.html
 .vercel/
