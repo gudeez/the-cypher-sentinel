@@ -7,13 +7,16 @@ Strategy:
 3. Score posts by engagement velocity (engagement / age^1.5)
 4. Cluster similar posts via Jaccard similarity
 5. Surface the top post per cluster
+
+Uses a single persistent browser session for all requests.
 """
 import json
 import re
 import hashlib
 from datetime import datetime, timezone, timedelta
+from urllib.parse import quote
 from config import SEEN_FILE
-from scrapling.fetchers import StealthyFetcher
+from scrapling.engines._browsers._stealth import StealthySession
 
 
 # High-signal keyword queries for each vertical
@@ -166,77 +169,6 @@ def _extract_posts_from_page(page):
     return posts
 
 
-def _scrape_trending():
-    """Scrape X's trending/explore page for current trends."""
-    trends = []
-    try:
-        print("  [X] Scraping trending topics...")
-        page = StealthyFetcher.fetch(
-            "https://x.com/explore/tabs/trending",
-            headless=True,
-            network_idle=True,
-        )
-
-        # Trending items are in spans within the explore page
-        trend_items = page.css('[data-testid="trend"]')
-        for item in trend_items[:20]:
-            spans = item.css('span')
-            trend_text = " ".join(s.text for s in spans if s.text).strip()
-            if trend_text and len(trend_text) > 2:
-                trends.append(trend_text)
-
-        if not trends:
-            # Fallback: look for any prominent text links
-            links = page.css('a[href*="/search"]')
-            for link in links[:20]:
-                text = link.text.strip() if link.text else ""
-                if text and len(text) > 2:
-                    trends.append(text)
-
-        print(f"  [X] Found {len(trends)} trending topics")
-    except Exception as e:
-        print(f"  [X] Failed to scrape trending: {e}")
-
-    return trends
-
-
-def _scrape_search(query):
-    """Scrape X search results for a query (logged-out view)."""
-    from urllib.parse import quote
-    posts = []
-    encoded = quote(query)
-
-    cookies = _get_cookies()
-    try:
-        kwargs = {
-            "headless": True,
-            "network_idle": True,
-        }
-        if cookies:
-            kwargs["cookies"] = cookies
-
-        page = StealthyFetcher.fetch(
-            f"https://x.com/search?q={encoded}&src=typed_query&f=top",
-            **kwargs,
-        )
-
-        # Check if we got redirected to login
-        current_url = ""
-        try:
-            current_url = page.url if hasattr(page, 'url') else ""
-        except Exception:
-            pass
-
-        if "login" in str(current_url).lower():
-            return posts
-
-        posts = _extract_posts_from_page(page)
-    except Exception as e:
-        print(f"  [X] Search failed for '{query[:30]}': {e}")
-
-    return posts
-
-
 def _get_cookies():
     """Load X session cookies from cookies.json if available."""
     cookie_file = SEEN_FILE.parent / "x_cookies.json"
@@ -246,25 +178,6 @@ def _get_cookies():
         except Exception:
             pass
     return None
-
-
-def _scrape_profile(account):
-    """Scrape recent posts from an account."""
-    posts = []
-    cookies = _get_cookies()
-    try:
-        kwargs = {
-            "headless": True,
-            "network_idle": True,
-        }
-        if cookies:
-            kwargs["cookies"] = cookies
-
-        page = StealthyFetcher.fetch(f"https://x.com/{account}", **kwargs)
-        posts = _extract_posts_from_page(page)
-    except Exception as e:
-        print(f"  [X] Failed to scrape @{account}: {e}")
-    return posts
 
 
 def _tokenize(text):
@@ -322,7 +235,7 @@ def _cluster_posts(posts, threshold=0.4):
     return [posts[c[0]] for c in clusters]
 
 
-# Accounts organized by vertical — high-signal cybersecurity posters
+# Default accounts — used as fallback when search requires login
 ACCOUNTS = {
     "Security": ["briankrebs", "SwiftOnSecurity", "troyhunt"],
     "Privacy": ["EFF", "signalapp", "torproject"],
@@ -331,41 +244,90 @@ ACCOUNTS = {
 
 
 def fetch_x_posts(keyword_sets=None, accounts=None):
-    """Full pipeline: trending + keyword search + profile scraping + velocity + clustering."""
+    """Full pipeline using a single browser session: trending + search + profiles + velocity + clustering."""
     if keyword_sets is None:
         keyword_sets = KEYWORD_SETS
     if accounts is None:
         accounts = ACCOUNTS
     seen = _load_seen()
     all_posts = []
+    cookies = _get_cookies()
 
-    # Step 1: Try trending topics
-    trends = _scrape_trending()
+    # Build session config
+    session_kwargs = {"headless": True}
+    if cookies:
+        session_kwargs["cookies"] = cookies
 
-    # Step 2: Search keyword queries
-    search_worked = False
-    for vertical, queries in keyword_sets.items():
-        for query in queries[:1]:  # Limit to 1 per vertical to save memory
-            print(f"  [X] Searching: {query[:40]}...")
-            posts = _scrape_search(query)
-            if posts:
-                search_worked = True
-                all_posts.extend(posts)
-                print(f"      Found {len(posts)} posts")
-            else:
-                print(f"      No results (may require login)")
+    print("  [X] Starting browser session...")
+    session = StealthySession(**session_kwargs)
+    try:
+        session.start()
 
-    # Step 3: If search didn't work (login wall), scrape accounts by vertical
-    if not search_worked:
-        print("  [X] Search requires login, scraping accounts by vertical...")
-        for vertical, accts in accounts.items():
-            print(f"  [X] --- {vertical} ---")
-            for account in accts:
-                print(f"  [X] Scraping @{account}...")
-                posts = _scrape_profile(account)
-                all_posts.extend(posts)
+        # Step 1: Trending topics
+        print("  [X] Scraping trending topics...")
+        try:
+            page = session.fetch("https://x.com/explore/tabs/trending", network_idle=True)
+            trend_items = page.css('[data-testid="trend"]')
+            trends = []
+            for item in trend_items[:20]:
+                spans = item.css('span')
+                trend_text = " ".join(s.text for s in spans if s.text).strip()
+                if trend_text and len(trend_text) > 2:
+                    trends.append(trend_text)
+            print(f"  [X] Found {len(trends)} trending topics")
+        except Exception as e:
+            print(f"  [X] Failed to scrape trending: {e}")
 
-    # Step 5: Deduplicate against seen
+        # Step 2: Keyword searches
+        search_worked = False
+        for vertical, queries in keyword_sets.items():
+            for query in queries[:1]:
+                print(f"  [X] Searching: {query[:40]}...")
+                try:
+                    encoded = quote(query)
+                    page = session.fetch(
+                        f"https://x.com/search?q={encoded}&src=typed_query&f=top",
+                        network_idle=True,
+                    )
+                    current_url = ""
+                    try:
+                        current_url = page.url if hasattr(page, 'url') else ""
+                    except Exception:
+                        pass
+
+                    if "login" in str(current_url).lower():
+                        print(f"      No results (may require login)")
+                        continue
+
+                    posts = _extract_posts_from_page(page)
+                    if posts:
+                        search_worked = True
+                        all_posts.extend(posts)
+                        print(f"      Found {len(posts)} posts")
+                    else:
+                        print(f"      No results (may require login)")
+                except Exception as e:
+                    print(f"  [X] Search failed for '{query[:30]}': {e}")
+
+        # Step 3: If search didn't work, scrape account profiles
+        if not search_worked:
+            print("  [X] Search requires login, scraping accounts by vertical...")
+            for vertical, accts in accounts.items():
+                print(f"  [X] --- {vertical} ---")
+                for account in accts:
+                    print(f"  [X] Scraping @{account}...")
+                    try:
+                        page = session.fetch(f"https://x.com/{account}", network_idle=True)
+                        posts = _extract_posts_from_page(page)
+                        all_posts.extend(posts)
+                    except Exception as e:
+                        print(f"  [X] Failed to scrape @{account}: {e}")
+
+    finally:
+        print("  [X] Closing browser session...")
+        session.close()
+
+    # Step 4: Deduplicate against seen
     unique = []
     seen_urls = set()
     for p in all_posts:
@@ -375,11 +337,11 @@ def fetch_x_posts(keyword_sets=None, accounts=None):
 
     print(f"  [X] {len(unique)} unique posts before clustering")
 
-    # Step 6: Cluster similar posts
+    # Step 5: Cluster similar posts
     clustered = _cluster_posts(unique)
     print(f"  [X] {len(clustered)} posts after clustering")
 
-    # Step 7: Sort by velocity score
+    # Step 6: Sort by velocity score
     clustered.sort(key=lambda p: p.get("velocity", 0), reverse=True)
 
     # Log top posts
