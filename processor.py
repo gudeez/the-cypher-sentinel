@@ -13,6 +13,7 @@ def _generate(prompt, max_tokens=300):
                     "model": OLLAMA_MODEL,
                     "prompt": prompt,
                     "stream": False,
+                    "think": False,
                     "options": {
                         "num_ctx": 4096,
                         "num_predict": max_tokens,
@@ -31,30 +32,28 @@ def _generate(prompt, max_tokens=300):
 
 
 def summarize(story):
-    """Summarize a story in Victorian newspaper voice."""
+    """Summarize a story in plain English."""
     source_note = ""
     if story.get("type") == "x_post":
         source_note = f"This is a post from X/Twitter by {story.get('source', 'unknown')}."
     elif story.get("type") == "github":
         source_note = f"This is a GitHub repository. Stars: {story.get('stars', 'N/A')}. Language: {story.get('language', 'N/A')}."
 
-    prompt = f"""/no_think
-You are the editor of "The Cipher Sentinel," a newspaper from the 1880s that covers cybersecurity and privacy news. Write a 2-3 sentence summary of this item in the voice of a Victorian-era journalist. Be informative but colorful. Do not use modern slang.
+    prompt = f"""Write a concise 2-3 sentence description of this cybersecurity/privacy news item. Be clear, informative, and factual. No jargon-heavy language — write for a general tech audience.
 
 Title: {story['title']}
 Summary: {story.get('summary', 'No details available.')}
 Source: {story.get('source', 'Unknown')}
 {source_note}
 
-Write ONLY the summary, no preamble:"""
+Write ONLY the description, no preamble:"""
 
     return _generate(prompt, max_tokens=200)
 
 
 def generate_headline(story):
     """Generate a dramatic 1880s-style headline."""
-    prompt = f"""/no_think
-You MUST rewrite this headline completely in the dramatic style of an 1880s newspaper. Do NOT repeat the original headline. Make it sensational, Victorian, and punchy. Use title case. Keep it under 15 words.
+    prompt = f"""You MUST rewrite this headline completely in the dramatic style of an 1880s newspaper. Do NOT repeat the original headline. Make it sensational, Victorian, and punchy. Use title case. Keep it under 15 words.
 
 Original: {story['title']}
 Context: {story.get('summary', '')[:200]}
@@ -82,8 +81,7 @@ def editorialize(stories):
         briefs.append(f"{i}. {s['title']}: {s.get('summary', '')[:150]}")
     stories_text = "\n".join(briefs)
 
-    prompt = f"""/no_think
-You are the editor-in-chief of "The Cipher Sentinel," an 1880s newspaper covering cybersecurity and digital privacy. Write a short Editor's Column (3-4 sentences) identifying the overarching themes in today's stories. Write in a Victorian editorial voice — authoritative, slightly pompous, but genuinely concerned about the security of the digital dominion.
+    prompt = f"""You are the editor-in-chief of "The Cipher Sentinel," an 1880s newspaper covering cybersecurity and digital privacy. Write a short Editor's Column (3-4 sentences) identifying the overarching themes in today's stories. Write in a Victorian editorial voice — authoritative, slightly pompous, but genuinely concerned about the security of the digital dominion.
 
 Today's stories:
 {stories_text}
@@ -100,8 +98,7 @@ def generate_telegram_digest(stories, editorial):
         briefs.append(f"- {s['title']}: {s.get('summary', '')[:100]}")
     stories_text = "\n".join(briefs)
 
-    prompt = f"""/no_think
-You are writing a brief Telegram message digest for "The Cipher Sentinel" cybersecurity newsletter. Summarize the top stories in a punchy, readable format. Use emoji sparingly. Keep it under 300 words. Include the most important 5-6 stories.
+    prompt = f"""You are writing a brief Telegram message digest for "The Cipher Sentinel" cybersecurity newsletter. Summarize the top stories in a punchy, readable format. Use emoji sparingly. Keep it under 300 words. Include the most important 5-6 stories.
 
 Editor's take: {editorial}
 
