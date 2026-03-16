@@ -8,7 +8,7 @@ def send_edition_to_telegram(digest_text, edition_date):
         print("[Telegram] No bot token or channel ID configured, skipping")
         return False
 
-    header = f"🛡 *THE CIPHER SENTINEL*\n_{edition_date}_\n\n"
+    header = f"🛡 *THE CYPHER SENTINEL*\n_{edition_date}_\n\n"
     message = header + digest_text
 
     # Telegram message limit is 4096 chars

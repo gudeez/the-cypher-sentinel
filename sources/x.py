@@ -330,34 +330,22 @@ ACCOUNTS = {
 }
 
 
-def fetch_x_posts():
+def fetch_x_posts(keyword_sets=None, accounts=None):
     """Full pipeline: trending + keyword search + profile scraping + velocity + clustering."""
+    if keyword_sets is None:
+        keyword_sets = KEYWORD_SETS
+    if accounts is None:
+        accounts = ACCOUNTS
     seen = _load_seen()
     all_posts = []
 
     # Step 1: Try trending topics
     trends = _scrape_trending()
 
-    # Filter trends for our verticals
-    security_keywords = {"security", "cyber", "hack", "breach", "vulnerability", "exploit", "malware",
-                         "ransomware", "phishing", "cve", "infosec", "zero-day", "patch", "cisa"}
-    privacy_keywords = {"privacy", "surveillance", "encrypt", "encryption", "gdpr", "data", "tor", "signal"}
-    threat_keywords = {"apt", "threat", "attack", "espionage", "nation-state", "critical infrastructure"}
-    all_keywords = security_keywords | privacy_keywords | threat_keywords
-
-    relevant_trends = []
-    for t in trends:
-        t_lower = t.lower()
-        if any(kw in t_lower for kw in all_keywords):
-            relevant_trends.append(t)
-
-    if relevant_trends:
-        print(f"  [X] Relevant trends: {', '.join(relevant_trends[:5])}")
-
     # Step 2: Search keyword queries
     search_worked = False
-    for vertical, queries in KEYWORD_SETS.items():
-        for query in queries[:2]:  # Limit to 2 per vertical to save time
+    for vertical, queries in keyword_sets.items():
+        for query in queries[:1]:  # Limit to 1 per vertical to save memory
             print(f"  [X] Searching: {query[:40]}...")
             posts = _scrape_search(query)
             if posts:
@@ -367,18 +355,10 @@ def fetch_x_posts():
             else:
                 print(f"      No results (may require login)")
 
-    # Step 3: Also search relevant trends
-    for trend in relevant_trends[:3]:
-        print(f"  [X] Searching trend: {trend}...")
-        posts = _scrape_search(trend)
-        if posts:
-            all_posts.extend(posts)
-            print(f"      Found {len(posts)} posts")
-
-    # Step 4: If search didn't work (login wall), scrape accounts by vertical
+    # Step 3: If search didn't work (login wall), scrape accounts by vertical
     if not search_worked:
         print("  [X] Search requires login, scraping accounts by vertical...")
-        for vertical, accts in ACCOUNTS.items():
+        for vertical, accts in accounts.items():
             print(f"  [X] --- {vertical} ---")
             for account in accts:
                 print(f"  [X] Scraping @{account}...")

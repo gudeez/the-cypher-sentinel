@@ -31,7 +31,7 @@ def _generate(prompt, max_tokens=300):
     return ""
 
 
-def summarize(story):
+def summarize(story, domain_context="cybersecurity and digital privacy"):
     """Summarize a story in plain English."""
     source_note = ""
     if story.get("type") == "x_post":
@@ -39,7 +39,7 @@ def summarize(story):
     elif story.get("type") == "github":
         source_note = f"This is a GitHub repository. Stars: {story.get('stars', 'N/A')}. Language: {story.get('language', 'N/A')}."
 
-    prompt = f"""Write a concise 2-3 sentence description of this cybersecurity/privacy news item. Be clear, informative, and factual. No jargon-heavy language — write for a general tech audience.
+    prompt = f"""Write a concise 2-3 sentence description of this {domain_context} news item. Be clear, informative, and factual. No jargon-heavy language — write for a general tech audience.
 
 Title: {story['title']}
 Summary: {story.get('summary', 'No details available.')}
@@ -60,28 +60,26 @@ Context: {story.get('summary', '')[:200]}
 
 Example rewrites:
 - "Major data breach at hospital" -> "Nefarious Scoundrels Plunder Hospital Ledgers in Audacious Digital Burglary"
-- "New encryption standard released" -> "Impenetrable Cipher Engine Unveiled to Thunderous Acclaim"
+- "New encryption standard released" -> "Impenetrable Cypher Engine Unveiled to Thunderous Acclaim"
 - "Ransomware gang arrested" -> "Scotland Yard of the Ether Nets Notorious Band of Digital Highwaymen"
 
 Your dramatic Victorian rewrite:"""
 
     result = _generate(prompt, max_tokens=50)
-    # Clean up - remove quotes, extra whitespace
     result = result.strip('"\'').strip()
-    # If the LLM just returned the original, flag it
     if not result or result.lower() == story["title"].lower():
         return f"Most Alarming: {story['title']}"
     return result
 
 
-def editorialize(stories):
+def editorialize(stories, domain_context="cybersecurity, artificial intelligence, and blockchain"):
     """Write an editor's column summarizing the day's themes."""
     briefs = []
-    for i, s in enumerate(stories[:8], 1):
+    for i, s in enumerate(stories[:12], 1):
         briefs.append(f"{i}. {s['title']}: {s.get('summary', '')[:150]}")
     stories_text = "\n".join(briefs)
 
-    prompt = f"""You are the editor-in-chief of "The Cipher Sentinel," an 1880s newspaper covering cybersecurity and digital privacy. Write a short Editor's Column (3-4 sentences) identifying the overarching themes in today's stories. Write in a Victorian editorial voice — authoritative, slightly pompous, but genuinely concerned about the security of the digital dominion.
+    prompt = f"""You are the editor-in-chief of "The Cypher Sentinel," an 1880s newspaper covering {domain_context}. Write a short Editor's Column (3-4 sentences) identifying the overarching themes in today's stories. Write in a Victorian editorial voice — authoritative, slightly pompous, but genuinely concerned about the state of the digital dominion.
 
 Today's stories:
 {stories_text}
@@ -94,11 +92,11 @@ Write ONLY the editorial column, no title or preamble:"""
 def generate_telegram_digest(stories, editorial):
     """Generate a concise Telegram-friendly digest."""
     briefs = []
-    for s in stories[:8]:
+    for s in stories[:10]:
         briefs.append(f"- {s['title']}: {s.get('summary', '')[:100]}")
     stories_text = "\n".join(briefs)
 
-    prompt = f"""You are writing a brief Telegram message digest for "The Cipher Sentinel" cybersecurity newsletter. Summarize the top stories in a punchy, readable format. Use emoji sparingly. Keep it under 300 words. Include the most important 5-6 stories.
+    prompt = f"""You are writing a brief Telegram message digest for "The Cypher Sentinel" newsletter covering cybersecurity, AI, and blockchain. Summarize the top stories in a punchy, readable format. Use emoji sparingly. Keep it under 300 words. Include the most important 5-6 stories.
 
 Editor's take: {editorial}
 

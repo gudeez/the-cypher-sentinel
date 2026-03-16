@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Cipher Sentinel — {{ date }}</title>
+    <title>The Cypher Sentinel — {{ date }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
     <style>
@@ -383,7 +383,7 @@
         <!-- Masthead -->
         <header class="masthead">
             <hr class="masthead-rule-top">
-            <h1>The Cipher Sentinel</h1>
+            <h1>The Cypher Sentinel</h1>
             <div class="subtitle">&ldquo;Guarding the Gates of the Digital Dominion&rdquo;</div>
             <div class="masthead-meta">
                 <span>Vol. I &middot; No. {{ edition_number }}</span>
@@ -400,32 +400,44 @@
         </div>
         {% endif %}
 
-        <!-- Lead Stories -->
-        {% if news_stories|length > 0 %}
+        <!-- Per-Domain Sections: Cybersecurity, AI, Blockchain -->
+        {% for domain_key, domain in domains.items() %}
+        {% set news = domain.news %}
+        {% set x = domain.x %}
+        {% set github = domain.github %}
+        {% set cfg = domain.config %}
+
+        {% if news|length > 0 or x|length > 0 or github|length > 0 %}
         <hr class="thick-rule">
+        <div class="github-section">
+            <h2>&diams; {{ cfg.name }} &diams;</h2>
+        </div>
+
+        <!-- Lead Stories -->
+        {% if news|length > 0 %}
         <div class="lead-section">
             <div class="lead-story">
-                <div class="story-source">{{ news_stories[0].source }}</div>
-                <div class="headline">{{ news_stories[0].headline }}</div>
-                <div class="story-body">{{ news_stories[0].body }}</div>
-                <a class="story-link" href="{{ news_stories[0].url }}" target="_blank">Continue reading &rarr;</a>
+                <div class="story-source">{{ news[0].source }}</div>
+                <div class="headline">{{ news[0].headline }}</div>
+                <div class="story-body">{{ news[0].body }}</div>
+                <a class="story-link" href="{{ news[0].url }}" target="_blank">Continue reading &rarr;</a>
             </div>
-            {% if news_stories|length > 1 %}
+            {% if news|length > 1 %}
             <div class="second-story" style="border-left: 1px solid var(--rule); padding-left: 30px;">
-                <div class="story-source">{{ news_stories[1].source }}</div>
-                <div class="headline">{{ news_stories[1].headline }}</div>
-                <div class="story-body">{{ news_stories[1].body }}</div>
-                <a class="story-link" href="{{ news_stories[1].url }}" target="_blank">Continue reading &rarr;</a>
+                <div class="story-source">{{ news[1].source }}</div>
+                <div class="headline">{{ news[1].headline }}</div>
+                <div class="story-body">{{ news[1].body }}</div>
+                <a class="story-link" href="{{ news[1].url }}" target="_blank">Continue reading &rarr;</a>
             </div>
             {% endif %}
         </div>
         {% endif %}
 
-        <!-- Remaining News Stories -->
-        {% if news_stories|length > 2 %}
-        <hr class="thick-rule">
+        <!-- Remaining News -->
+        {% if news|length > 2 %}
+        <hr class="thin-rule">
         <div class="three-col">
-            {% for story in news_stories[2:] %}
+            {% for story in news[2:] %}
             <div class="col-story {% if not loop.first %}col-divider{% endif %}">
                 <div class="story-source">{{ story.source }}</div>
                 <div class="headline">{{ story.headline }}</div>
@@ -436,13 +448,13 @@
         </div>
         {% endif %}
 
-        <!-- X/Twitter Dispatches -->
-        {% if x_stories|length > 0 %}
-        <hr class="thick-rule">
+        <!-- X Dispatches -->
+        {% if x|length > 0 %}
+        <hr class="thin-rule">
         <div class="github-section">
-            <h2>&diams; Intercepted Dispatches &diams;</h2>
+            <h2>&diams; {{ cfg.x_heading }} &diams;</h2>
             <div class="three-col">
-                {% for story in x_stories %}
+                {% for story in x %}
                 <div class="col-story {% if not loop.first %}col-divider{% endif %}">
                     <div class="story-source">{{ story.source }}</div>
                     <div class="headline">{{ story.headline }}</div>
@@ -454,13 +466,13 @@
         </div>
         {% endif %}
 
-        <!-- GitHub / Arsenal & Armory -->
-        {% if github_stories|length > 0 %}
-        <hr class="thick-rule">
+        <!-- GitHub Repos -->
+        {% if github|length > 0 %}
+        <hr class="thin-rule">
         <div class="github-section">
-            <h2>&diams; Arsenal &amp; Armory &diams;</h2>
+            <h2>&diams; {{ cfg.github_heading }} &diams;</h2>
             <div class="github-grid">
-                {% for repo in github_stories %}
+                {% for repo in github %}
                 <div class="repo-card">
                     <div class="repo-name"><a href="{{ repo.url }}" target="_blank">{{ repo.title }}</a></div>
                     <div class="repo-meta">{{ repo.stars }} stars &middot; {{ repo.language }}</div>
@@ -472,10 +484,13 @@
         </div>
         {% endif %}
 
+        {% endif %}
+        {% endfor %}
+
         <!-- Footer -->
         <div class="footer">
             <div class="ornament">&mdash; &diams; &mdash;</div>
-            Printed by Automaton &middot; Powered by Qwen 3.5 &middot; &copy; {{ year }} The Cipher Sentinel
+            Printed by Automaton &middot; Powered by Qwen 3.5 &middot; &copy; {{ year }} The Cypher Sentinel
         </div>
     </div>
 

@@ -13,8 +13,8 @@ def _load_seen():
     return {}
 
 
-def fetch_trending():
-    """Scrape GitHub trending page for security-related repos."""
+def fetch_trending(filter_keywords=None):
+    """Scrape GitHub trending page, filtered by keywords."""
     seen = _load_seen()
     stories = []
 
@@ -22,7 +22,7 @@ def fetch_trending():
         resp = requests.get(
             "https://github.com/trending",
             timeout=15,
-            headers={"User-Agent": "TheCipherSentinel/1.0"},
+            headers={"User-Agent": "TheCypherSentinel/1.0"},
         )
         soup = BeautifulSoup(resp.text, "html.parser")
 
@@ -40,15 +40,11 @@ def fetch_trending():
             desc_p = article.select_one("p")
             description = desc_p.get_text(strip=True) if desc_p else ""
 
-            # Check if security-related
-            text_lower = (repo_path + " " + description).lower()
-            security_keywords = ["security", "pentest", "exploit", "vulnerability", "malware",
-                                 "forensics", "encryption", "privacy", "osint", "reverse-engineering",
-                                 "ctf", "firewall", "ids", "honeypot", "scanner", "audit",
-                                 "infosec", "cyber", "threat", "phishing", "ransomware",
-                                 "cryptography", "zero-day", "backdoor", "sandbox", "siem"]
-            if not any(kw in text_lower for kw in security_keywords):
-                continue
+            # Check if relevant to domain keywords
+            if filter_keywords:
+                text_lower = (repo_path + " " + description).lower()
+                if not any(kw in text_lower for kw in filter_keywords):
+                    continue
 
             stars_el = article.select_one("[href$='/stargazers']")
             stars_text = stars_el.get_text(strip=True).replace(",", "") if stars_el else "0"
@@ -75,13 +71,15 @@ def fetch_trending():
     return stories
 
 
-def fetch_notable_repos():
-    """Find popular security repos via GitHub search API."""
+def fetch_notable_repos(topics=None):
+    """Find popular repos via GitHub search API."""
+    if topics is None:
+        topics = GITHUB_TOPICS
     seen = _load_seen()
     stories = []
     cutoff = (datetime.now(timezone.utc) - timedelta(days=14)).strftime("%Y-%m-%d")
 
-    for topic in GITHUB_TOPICS:
+    for topic in topics:
         try:
             resp = requests.get(
                 "https://api.github.com/search/repositories",
@@ -92,7 +90,7 @@ def fetch_notable_repos():
                     "per_page": 30,
                 },
                 timeout=15,
-                headers={"User-Agent": "TheCipherSentinel/1.0"},
+                headers={"User-Agent": "TheCypherSentinel/1.0"},
             )
             data = resp.json()
 

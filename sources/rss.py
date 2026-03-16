@@ -18,13 +18,15 @@ def _strip_html(text):
     return BeautifulSoup(text, "html.parser").get_text(separator=" ", strip=True)
 
 
-def fetch_all_feeds():
+def fetch_all_feeds(feeds=None):
+    if feeds is None:
+        feeds = RSS_FEEDS
     seen = _load_seen()
     stories = []
 
-    for source_name, feed_url in RSS_FEEDS.items():
+    for source_name, feed_url in feeds.items():
         try:
-            resp = requests.get(feed_url, timeout=15, headers={"User-Agent": "TheCipherSentinel/1.0"})
+            resp = requests.get(feed_url, timeout=15, headers={"User-Agent": "TheCypherSentinel/1.0"})
             feed = feedparser.parse(resp.content)
         except Exception as e:
             print(f"[RSS] Failed to fetch {source_name}: {e}")

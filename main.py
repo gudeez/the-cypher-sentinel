@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The Cipher Sentinel — Cybersecurity & Privacy News, Victorian Style."""
+"""The Cypher Sentinel — Cybersecurity & Privacy News, Victorian Style."""
 
 import argparse
 import http.server
@@ -37,11 +37,11 @@ def cmd_serve(args):
     # Create a placeholder if no edition exists yet
     latest = EDITIONS_DIR / "latest.html"
     if not latest.exists():
-        latest.write_text("<html><body><h1>The Cipher Sentinel</h1><p>No edition generated yet. Run: python3 main.py generate</p></body></html>")
+        latest.write_text("<html><body><h1>The Cypher Sentinel</h1><p>No edition generated yet. Run: python3 main.py generate</p></body></html>")
 
     server = http.server.HTTPServer(("0.0.0.0", port), NewspaperHandler)
 
-    print(f"\n  The Cipher Sentinel is being served at:")
+    print(f"\n  The Cypher Sentinel is being served at:")
     print(f"  http://localhost:{port}/\n")
 
     try:
@@ -74,7 +74,7 @@ def cmd_schedule(args):
     schedule.every().day.at("08:30").do(job)
 
     now = datetime.now(CST)
-    print(f"\n  The Cipher Sentinel — Scheduler active")
+    print(f"\n  The Cypher Sentinel — Scheduler active")
     print(f"  Current time (CST): {now.strftime('%Y-%m-%d %H:%M')}")
     print(f"  Next edition at:    08:30 CST daily")
     print(f"  Press Ctrl+C to stop.\n")
@@ -89,7 +89,7 @@ def cmd_schedule(args):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="The Cipher Sentinel — Guarding the Gates of the Digital Dominion",
+        description="The Cypher Sentinel — Guarding the Gates of the Digital Dominion",
     )
     sub = parser.add_subparsers(dest="command")
 
