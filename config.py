@@ -54,9 +54,12 @@ DOMAINS = {
             ],
         },
         "x_accounts": {
-            "Security": ["briankrebs", "SwiftOnSecurity", "troyhunt", "GossiTheDog", "thegrugq", "taviso"],
-            "Privacy": ["EFF", "signalapp", "torproject", "ProtonMail", "evacide"],
-            "Research": ["ProjectZeroBugs", "MalwareTechBlog", "hasherezade", "NCCGroupInfosec"],
+            "Security": ["briankrebs", "SwiftOnSecurity", "troyhunt", "GossiTheDog",
+                         "TheHackersNews", "CISAgov", "NSACyber", "RecordedFuture"],
+            "Privacy": ["EFF", "signalapp", "torproject", "ProtonMail", "Snowden",
+                         "accessnow", "mozilla", "DuckDuckGo"],
+            "Research": ["ProjectZeroBugs", "MalwareTechBlog", "hasherezade",
+                          "Unit42_Intel", "SentinelOne", "CrowdStrike", "Mandiant"],
         },
     },
     "ai": {
