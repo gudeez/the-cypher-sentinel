@@ -17,7 +17,7 @@ OLLAMA_URL = "http://localhost:11434"
 OLLAMA_MODEL = "qwen3.5:latest"
 
 # --- Telegram (matches your other projects' env var names) ---
-TG_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "") or os.environ.get("TELEGRAM_BOT_TOKEN", "")
 TG_CHANNEL_ID = os.environ.get("TG_CHANNEL_ID", "")  # e.g. "@your_channel" or "-100xxxxx"
 
 # --- Domains ---

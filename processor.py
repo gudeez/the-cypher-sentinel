@@ -96,13 +96,11 @@ def generate_telegram_digest(stories, editorial):
         briefs.append(f"- {s['title']}: {s.get('summary', '')[:100]}")
     stories_text = "\n".join(briefs)
 
-    prompt = f"""You are writing a brief Telegram message digest for "The Cypher Sentinel" newsletter covering cybersecurity, AI, and blockchain. Summarize the top stories in a punchy, readable format. Use emoji sparingly. Keep it under 300 words. Include the most important 5-6 stories.
-
-Editor's take: {editorial}
+    prompt = f"""Write a very brief Telegram notification for "The Cypher Sentinel" newsletter. Say the new issue is out, then list the 4-5 most important headlines as short bullet points (one line each). Keep the entire message under 500 characters. No links.
 
 Stories:
 {stories_text}
 
-Write the Telegram message:"""
+Write the notification:"""
 
-    return _generate(prompt, max_tokens=400)
+    return _generate(prompt, max_tokens=150)

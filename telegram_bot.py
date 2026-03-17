@@ -1,19 +1,25 @@
 import requests
 from config import TG_BOT_TOKEN, TG_CHANNEL_ID
 
+SITE_URL = "https://cyphersentinel.up.railway.app/"
+
 
 def send_edition_to_telegram(digest_text, edition_date):
-    """Send a digest message to the configured Telegram channel."""
+    """Send a brief notification with link to the configured Telegram channel."""
     if not TG_BOT_TOKEN or not TG_CHANNEL_ID:
         print("[Telegram] No bot token or channel ID configured, skipping")
         return False
 
-    header = f"🛡 *THE CYPHER SENTINEL*\n_{edition_date}_\n\n"
-    message = header + digest_text
+    message = (
+        f"🛡 *THE CYPHER SENTINEL*\n"
+        f"_{edition_date}_\n\n"
+        f"{digest_text}\n\n"
+        f"📰 [Read the full edition]({SITE_URL})"
+    )
 
-    # Telegram message limit is 4096 chars
-    if len(message) > 4096:
-        message = message[:4090] + "\n..."
+    # Keep it well under Telegram's 4096 char limit
+    if len(message) > 1500:
+        message = message[:1450] + f"...\n\n📰 [Read the full edition]({SITE_URL})"
 
     try:
         resp = requests.post(
@@ -22,7 +28,7 @@ def send_edition_to_telegram(digest_text, edition_date):
                 "chat_id": TG_CHANNEL_ID,
                 "text": message,
                 "parse_mode": "Markdown",
-                "disable_web_page_preview": True,
+                "disable_web_page_preview": False,
             },
             timeout=30,
         )
