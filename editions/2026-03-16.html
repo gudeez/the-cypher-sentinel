@@ -355,6 +355,44 @@
             background: #8b0000;
         }
 
+
+        /* --- Pagination --- */
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0 0 0;
+            padding: 15px 0;
+            border-top: 2px solid var(--rule);
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+        }
+        .pagination a {
+            color: var(--link-color);
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid var(--card-border);
+            background: var(--editorial-bg);
+            transition: background 0.2s;
+            letter-spacing: 1px;
+        }
+        .pagination a:hover {
+            background: var(--btn-bg);
+            color: var(--btn-text);
+        }
+        .pagination .page-info {
+            font-style: italic;
+            color: var(--muted);
+            font-size: 12px;
+        }
+        .pagination .disabled {
+            color: var(--muted);
+            padding: 8px 16px;
+            border: 1px solid var(--rule);
+            opacity: 0.4;
+            cursor: default;
+        }
+
         /* --- Print --- */
         @media print {
             body { background: white; }
@@ -1243,6 +1281,14 @@
         
         
 
+
+        <!-- Pagination -->
+        <nav class="pagination" id="pagination">
+            <span class="disabled" id="prevLink">&larr; Previous Edition</span>
+            <span class="page-info" id="pageInfo"></span>
+            <span class="disabled" id="nextLink">Next Edition &rarr;</span>
+        </nav>
+
         <!-- Footer -->
         <div class="footer">
             <div class="ornament">&mdash; &diams; &mdash;</div>
@@ -1361,6 +1407,38 @@
 
     // Preload voices
     speechSynthesis.getVoices();
+    </script>
+
+    <script>
+    // --- Pagination ---
+    (function() {
+        const thisDate = "2026-03-16";
+        fetch("index.json")
+            .then(r => r.json())
+            .then(dates => {
+                const idx = dates.indexOf(thisDate);
+                const prevEl = document.getElementById('prevLink');
+                const nextEl = document.getElementById('nextLink');
+                const infoEl = document.getElementById('pageInfo');
+
+                if (idx > 0) {
+                    const a = document.createElement('a');
+                    a.href = dates[idx - 1] + '.html';
+                    a.innerHTML = '&larr; Previous Edition';
+                    prevEl.replaceWith(a);
+                }
+                if (idx >= 0 && idx < dates.length - 1) {
+                    const a = document.createElement('a');
+                    a.href = dates[idx + 1] + '.html';
+                    a.innerHTML = 'Next Edition &rarr;';
+                    nextEl.replaceWith(a);
+                }
+                if (idx >= 0) {
+                    infoEl.textContent = 'Edition ' + (idx + 1) + ' of ' + dates.length;
+                }
+            })
+            .catch(() => {});
+    })();
     </script>
 </body>
 </html>

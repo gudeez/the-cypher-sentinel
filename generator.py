@@ -165,6 +165,17 @@ def build_edition(send_telegram=True):
     print(f"  Saved: {edition_path}")
     print(f"  Saved: {latest_path}")
 
+    # --- Update edition index for pagination ---
+    import re
+    edition_dates = sorted(
+        re.match(r"(\d{4}-\d{2}-\d{2})\.html", f.name).group(1)
+        for f in EDITIONS_DIR.glob("????-??-??.html")
+        if re.match(r"\d{4}-\d{2}-\d{2}\.html", f.name)
+    )
+    index_path = EDITIONS_DIR / "index.json"
+    index_path.write_text(json.dumps(edition_dates), encoding="utf-8")
+    print(f"  Saved: {index_path} ({len(edition_dates)} editions)")
+
     # --- Update seen list ---
     seen = _load_seen()
     for s in all_stories_flat:

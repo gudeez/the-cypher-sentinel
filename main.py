@@ -5,10 +5,13 @@ import argparse
 import http.server
 import functools
 import os
+import subprocess
 import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from config import EDITIONS_DIR, SERVE_PORT
+
+PROJECT_ROOT = Path(__file__).resolve().parent
 
 CST = timezone(timedelta(hours=-6))
 
@@ -23,6 +26,26 @@ class NewspaperHandler(http.server.SimpleHTTPRequestHandler):
         if self.path == "/" or self.path == "":
             self.path = "/latest.html"
         super().do_GET()
+
+
+def git_push_edition():
+    """Stage editions/, commit with today's date, and push to origin."""
+    today = datetime.now(CST).strftime("%Y-%m-%d")
+    try:
+        run = functools.partial(subprocess.run, cwd=PROJECT_ROOT, check=True,
+                                capture_output=True, text=True)
+        run(["git", "add", "editions/"])
+        # Check if there's anything to commit
+        result = subprocess.run(["git", "diff", "--cached", "--quiet"],
+                                cwd=PROJECT_ROOT)
+        if result.returncode == 0:
+            print("  No edition changes to push.")
+            return
+        run(["git", "commit", "-m", f"Add edition {today}"])
+        run(["git", "push", "origin", "master"])
+        print(f"  Pushed edition {today} to origin/master.")
+    except subprocess.CalledProcessError as e:
+        print(f"  Git push failed: {e.stderr or e}")
 
 
 def cmd_generate(args):
@@ -68,6 +91,7 @@ def cmd_schedule(args):
         try:
             build_edition(send_telegram=not args.no_telegram)
             print("  Edition generated successfully.")
+            git_push_edition()
         except Exception as e:
             print(f"  Error generating edition: {e}")
 
