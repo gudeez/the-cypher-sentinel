@@ -74,7 +74,7 @@
         }
 
         .paper {
-            max-width: 960px;
+            max-width: 1200px;
             margin: 20px auto;
             padding: 40px 50px;
             background: var(--paper);
@@ -355,7 +355,6 @@
             background: #8b0000;
         }
 
-
         /* --- Pagination --- */
         .pagination {
             display: flex;
@@ -367,6 +366,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 14px;
         }
+
         .pagination a {
             color: var(--link-color);
             text-decoration: none;
@@ -376,15 +376,18 @@
             transition: background 0.2s;
             letter-spacing: 1px;
         }
+
         .pagination a:hover {
             background: var(--btn-bg);
             color: var(--btn-text);
         }
+
         .pagination .page-info {
             font-style: italic;
             color: var(--muted);
             font-size: 12px;
         }
+
         .pagination .disabled {
             color: var(--muted);
             padding: 8px 16px;
@@ -434,7 +437,7 @@
         
         <div class="editorial">
             <h2>&diams; Editor&rsquo;s Column &diams;</h2>
-            <p>In this week's dominion of the digital ether, we observe a treacherous convergence where ransomware gangs like LeakNet masquerade as harmless utilities and North Korean operatives infiltrate our very messaging applications. From the careless exposure of cryptocurrency keys in Seoul to the persistent espionage lurking within Southeast Asian military networks, the architects of chaos grow bolder with every passing hour. Meanwhile, our own guardians—the CISOs—find themselves armed with yesterday's tools against a storm of artificial intelligence and evolving malware that renders their defenses obsolete. It is a perilous state of affairs where even the grandest spectacles, such as the Olympics, must vigilantly guard against threats that stalk in the shadows of global connectivity.</p>
+            <p>Today's edition tackles the shifting landscape of enterprise AI and threat actor tactics, starting with Microsoft halting forced Copilot installations while Cisco SD-WAN bugs spark new fraud concerns. We also examine the growing risks to nonprofits from underreported cyberattacks and analyze a potential breakthrough in quantum factorization that could upend current encryption standards. Beyond technical threats, our coverage includes a new campaign abusing LiveChat for phishing against Ukraine, the Foilies 2026 report on government transparency, and the alarming financial scale of the ongoing AI brain drain. Finally, we wrap up with lighter news on recovering squid stocks in the Falklands and EFF's latest legal fight to ensure public access to safety laws.</p>
         </div>
         
 
@@ -456,16 +459,16 @@
         <div class="lead-section">
             <div class="lead-story">
                 <div class="story-source">BleepingComputer</div>
-                <div class="headline">Dreadful Hackers Steal Secrets Via Evil Scripts And Deno!</div>
-                <div class="story-body">The LeakNet ransomware gang has adopted the ClickFix social engineering tactic to trick users into executing malicious scripts while utilizing the open-source Deno runtime as a stealthy loader for their malware. This combination allows attackers to bypass traditional security defenses by leveraging trusted-looking browser-based code to gain initial access to corporate networks. Security experts warn that organizations must now update their training on "click-fix" scams and scan for unauthorized Deno installations.</div>
-                <a class="story-link" href="https://www.bleepingcomputer.com/news/security/leaknet-ransomware-uses-clickfix-and-deno-runtime-for-stealthy-attacks/" target="_blank">Continue reading &rarr;</a>
+                <div class="headline">Microsoft Ends Forced Installation of Copilot App on Windows</div>
+                <div class="story-body">Microsoft has ended its practice of automatically forcing the installation of the Microsoft 365 Copilot app on Windows devices already running Microsoft 365 desktop applications. This change grants users greater control over their system resources and prevents unwanted background processes from consuming bandwidth or memory without consent. The update marks a significant step forward in respecting user preferences regarding optional AI features within the productivity suite.</div>
+                <a class="story-link" href="https://www.bleepingcomputer.com/news/microsoft/microsoft-stops-force-installing-the-microsoft-365-copilot-app/" target="_blank">Continue reading &rarr;</a>
             </div>
             
             <div class="second-story" style="border-left: 1px solid var(--rule); padding-left: 30px;">
-                <div class="story-source">BleepingComputer</div>
-                <div class="headline">Tech Titans Resolve C:\ Drive Catastrophe on Samsung Machines!</div>
-                <div class="story-body">Microsoft has released updates to resolve critical issues preventing users from accessing their C: drive and launching applications on specific Samsung laptops running Windows 11 versions 24H2 and 25H2. This guidance addresses a bug affecting certain models where system files become locked or apps crash unexpectedly. Affected users can follow the provided steps to restore full access to their computer's primary storage and ensure stable performance.</div>
-                <a class="story-link" href="https://www.bleepingcomputer.com/news/microsoft/microsoft-shares-fix-for-windows-c-drive-access-issues-on-samsung-pcs/" target="_blank">Continue reading &rarr;</a>
+                <div class="story-source">Dark Reading</div>
+                <div class="headline">Scammers Hijack LiveChat Support to Steal Your Payment Details</div>
+                <div class="story-body">Cybercriminals are exploiting the LiveChat platform by creating fake support profiles that mimic major retailers like PayPal and Amazon to trick users into revealing sensitive information. Through these deceptive one-on-one conversations, attackers successfully harvest credit card details and personal data from unsuspecting customers. This social engineering campaign highlights how compromised or spoofed customer service channels can be weaponized for large-scale fraud.</div>
+                <a class="story-link" href="https://www.darkreading.com/threat-intelligence/attackers-livechat-phish-credit-card-personal-data" target="_blank">Continue reading &rarr;</a>
             </div>
             
         </div>
@@ -477,101 +480,66 @@
         <div class="three-col">
             
             <div class="col-story ">
+                <div class="story-source">Schneier on Security</div>
+                <div class="headline">Quantum Factoring May Yield Theoretical Speed Boost</div>
+                <div class="story-body">A new development suggests a potential theoretical improvement in the speed at which quantum computers can factor large numbers, a capability critical to breaking current encryption standards. While experts like Bruce Schneier express skepticism and caution that they are not qualified to fully verify the specific claims, the result represents a significant hypothetical step forward for quantum algorithms. If validated, this advancement would challenge the security foundations of widely used cryptographic systems that rely on the difficulty of integer factorization.</div>
+                <a class="story-link" href="https://www.schneier.com/blog/archives/2026/03/possible-new-result-in-quantum-factorization.html" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
                 <div class="story-source">The Hacker News</div>
-                <div class="headline">CISOs Wield Outdated Blades Against Artificial Demons While Peril Looms</div>
-                <div class="story-body">A new report from Pentera reveals that most security leaders are still relying on outdated tools and skills to protect rapidly evolving AI systems. Surveying 300 US CISOs, the study highlights a critical gap where current defenses fail to address modern adversarial threats against AI infrastructure. This mismatch between legacy security practices and the demands of artificial intelligence is leaving organizations increasingly vulnerable.</div>
-                <a class="story-link" href="https://thehackernews.com/2026/03/ai-is-everywhere-but-cisos-are-still.html" target="_blank">Read more &rarr;</a>
+                <div class="headline">Russia-linked Hackers Target Ukraine via Microsoft Edge Backdoor</div>
+                <div class="story-body">In February 2026, threat actors linked to Russia launched a new espionage campaign targeting Ukrainian organizations by exploiting vulnerabilities in Microsoft Edge's debugging features. This sophisticated attack, which shares similarities with the previous Laundry Bear operation, utilizes a backdoor called DRILLAPP to steal sensitive data while remaining hidden from detection tools. The campaign represents a continued effort by Russian-linked groups to infiltrate and compromise critical defense infrastructure within Ukraine.</div>
+                <a class="story-link" href="https://thehackernews.com/2026/03/drillapp-backdoor-targets-ukraine.html" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
-                <div class="story-source">BleepingComputer</div>
-                <div class="headline">Terrible Blight of Invisibility Strikes Bluetooth Devices in Windows 11!</div>
-                <div class="story-body">Microsoft has issued an urgent hotpatch for Windows 11 Enterprise systems to resolve a security flaw that could allow unauthorized users to view paired Bluetooth devices. This emergency update specifically targets machines with hotpatch capabilities enabled, ensuring that sensitive peripheral connections remain private and secure. The fix addresses a vulnerability where device visibility settings were not properly enforced, potentially exposing user hardware to network discovery attacks.</div>
-                <a class="story-link" href="https://www.bleepingcomputer.com/news/microsoft/new-windows-11-hotpatch-fixes-bluetooth-device-visibility-issue/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">BleepingComputer</div>
-                <div class="headline">Shocking Disaster! Outlook Classic Rendered Useless By Teams Add-In</div>
-                <div class="story-body">Microsoft is actively investigating a compatibility issue where enabling the Teams Meeting add-in causes the classic Outlook email client to become unusable. This bug affects users relying on the older interface, preventing them from accessing their inbox until a fix is deployed. Microsoft has acknowledged the problem and is working on a resolution to restore full functionality for impacted accounts.</div>
-                <a class="story-link" href="https://www.bleepingcomputer.com/news/microsoft/microsoft-enabling-teams-meeting-add-in-breaks-outlook-classic/" target="_blank">Read more &rarr;</a>
+                <div class="story-source">EFF Deeplinks</div>
+                <div class="headline">EFF Unveils 2026 Foilies Exposing Government Transparency Failures</div>
+                <div class="story-body">University of Nevada, Reno journalism students have launched "The Foilies 2026," a project documenting how government agencies are increasingly refusing to honor Freedom of Information Act requests. While these students previously received FCC complaint records within days, recent delays and denials reveal a troubling trend of reduced transparency in federal record-keeping. This initiative highlights the growing gap between the public's right to know and the reality of accessing government documents today.</div>
+                <a class="story-link" href="https://www.eff.org/deeplinks/2026/03/foilies-2026" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
                 <div class="story-source">Schneier on Security</div>
-                <div class="headline">South Korean Officials Blunderingly Expose $4.4 Million Crypto Hoard!</div>
-                <div class="story-body">South Korea's National Tax Service inadvertently published the recovery phrase for a seized cryptocurrency wallet belonging to tax evaders, exposing approximately $4.4 million in digital assets to theft. The mistake occurred when law enforcement shared photos of a Ledger hardware device containing the stolen funds during an announcement about their successful raid. This security lapse allowed attackers to immediately drain the wallet, highlighting the critical risks of mishandling sensitive cryptographic keys in public communications.</div>
-                <a class="story-link" href="https://www.schneier.com/blog/archives/2026/03/south-korean-police-accidentally-post-cryptocurrency-wallet-password.html" target="_blank">Read more &rarr;</a>
+                <div class="headline">Upcoming Speaking Engagements Announced for March 2026</div>
+                <div class="story-body">Security expert Bruce Schneier is set to present at several upcoming events in March 2026, including the Ross Anderson Lecture at the University of Cambridge and RSAC 2026 in San Francisco. He will also discuss "Canada and AI Sovereignty" via an online event hosted by the University of Toronto's Munk School before speaking at DemocracyXChange. These engagements highlight his continued focus on digital privacy, cybersecurity challenges, and the intersection of technology with global policy.</div>
+                <a class="story-link" href="https://www.schneier.com/blog/archives/2026/03/upcoming-speaking-engagements-54.html" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
-                <div class="story-source">The Hacker News</div>
-                <div class="headline">Nefarious North Koreans Snare Victims via KakaoTalk Phishing Gambit!</div>
-                <div class="story-body">North Korean-linked hackers known as Konni have exploited spear-phishing emails to trick victims into installing malware on their KakaoTalk desktop applications. Once access is gained, this malicious software automatically propagates to contacts within the victim's messaging network. Security researchers attribute this coordinated campaign to a group operating under the name Konni.</div>
-                <a class="story-link" href="https://thehackernews.com/2026/03/konni-deploys-endrat-through-spear.html" target="_blank">Read more &rarr;</a>
+                <div class="story-source">Schneier on Security</div>
+                <div class="headline">Squid Stocks Are Thriving in the Falklands Waters</div>
+                <div class="story-body">This blog post from Brian Krebs' "Schneier on Security" clarifies that the term "Squid" refers to a recovering marine species in the Falkland Islands rather than computer software. The article uses this biological context as an opportunity to discuss recent security stories and outlines the site's updated moderation policies for its readership.</div>
+                <a class="story-link" href="https://www.schneier.com/blog/archives/2026/03/friday-squid-blogging-increased-squid-population-in-the-falklands.html" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">Dark Reading</div>
+                <div class="headline">Cisco SD-WAN Bugs Spark Fraud, Fear, and Forgotten Hazards</div>
+                <div class="story-body">A wave of fake proof-of-concept exploits surrounding recent Cisco SD-WAN vulnerabilities has led to market confusion and exaggerated security fears. While genuine risks exist, many reported incidents are actually fraudulent attempts to capitalize on public excitement over these bugs. This situation highlights the danger of misinformation spreading alongside real cybersecurity threats in the enterprise networking sector.</div>
+                <a class="story-link" href="https://www.darkreading.com/vulnerabilities-threats/fake-pocs-risks-cisco-sd-wan" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
                 <div class="story-source">EFF Deeplinks</div>
-                <div class="headline">Shocking Secrets Exposed! Privacy Champion Confronts Censorship in Electrifying Broadcast</div>
-                <div class="story-body">In a special podcast episode, EFF Executive Director Cindy Cohn joins Cory Doctorow to discuss her new book, "Privacy's Defender," which chronicles her thirty-year fight against digital surveillance. The conversation blends memoir with advocacy, highlighting how early internet visionaries recognized the urgent need for legal and political defenses of online privacy. Listeners can access this discussion through various platforms, including the Internet Archive and YouTube, as part of an effort to keep privacy activism in focus during a hiatus from their main series.</div>
-                <a class="story-link" href="https://www.eff.org/deeplinks/2026/03/bonus-podcast-episode-privacys-defender-cindy-cohn-conversation-cory-doctorow" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">The Hacker News</div>
-                <div class="headline">CISA Warns: Wing FTP Breach Leaks Server Paths!</div>
-                <div class="story-body">The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has added a flaw in Wing FTP to its list of actively exploited vulnerabilities due to reports of real-world attacks. This specific issue, identified as CVE-2025-47813, allows attackers to extract sensitive server installation paths from affected systems. Organizations using this file transfer software should prioritize applying patches immediately to prevent unauthorized access to their network structures.</div>
-                <a class="story-link" href="https://thehackernews.com/2026/03/cisa-flags-actively-exploited-wing-ftp.html" target="_blank">Read more &rarr;</a>
+                <div class="headline">EFF Sues CPSC for Full Access to All Laws</div>
+                <div class="story-body">The Electronic Frontier Foundation (EFF) has filed a lawsuit against the Consumer Product Safety Commission to force the release of federally mandated safety laws that are currently difficult for the public to access. The suit supports Public Resource, a non-profit organization dedicated to making government documents like federal regulations freely available online so citizens can read, share, and comment on them. This legal action aims to uphold the principles of transparency by ensuring that critical rules governing product safety are open to everyone rather than being locked behind paywalls or complex access barriers.</div>
+                <a class="story-link" href="https://www.eff.org/deeplinks/2026/03/eff-launches-new-fight-free-law" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
                 <div class="story-source">Dark Reading</div>
-                <div class="headline">Savage Spies Shadow Asian Armies For Years In Vile Cyber Plot</div>
-                <div class="story-body">Researchers have identified a prolonged cyberespionage campaign in which hackers with ties to China infiltrated military organizations across Southeast Asia over several years. By deploying innovative backdoors alongside established evasion methods, these attackers secured persistent access to regional defense systems for intelligence gathering. This discovery highlights the ongoing threat of state-sponsored intrusions targeting critical military infrastructure in the region.</div>
-                <a class="story-link" href="https://www.darkreading.com/threat-intelligence/china-nexus-hackers-southeast-asian-military-orgs" target="_blank">Read more &rarr;</a>
+                <div class="headline">Why Nonprofit Cyber Attacks Remain Hidden Behind Missing Data</div>
+                <div class="story-body">Threat actors frequently target nonprofits because they often possess valuable data while lacking robust cybersecurity defenses. However, a significant shortage of reporting and available statistics creates a "data gap" that obscures the true scale of these attacks. This lack of transparency makes it difficult for the sector to fully understand the threat landscape or implement effective preventative measures.</div>
+                <a class="story-link" href="https://www.darkreading.com/threat-intelligence/data-gap-why-nonprofit-cyber-incidents-go-underreported" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
-                <div class="story-source">Dark Reading</div>
-                <div class="headline">GlassWorm Demon Morphs, Clad in Deceptive Garb to Steal!</div>
-                <div class="story-body">Security researchers have discovered a new variant of the GlassWorm malware that spreads by hiding within legitimate software dependencies to evade detection. This evolved version includes dozens of malicious extensions designed to bypass security controls while infiltrating systems through trusted packages. The findings highlight the growing threat of supply chain attacks where attackers compromise third-party components to deliver persistent infections.</div>
-                <a class="story-link" href="https://www.darkreading.com/application-security/glassworm-malware-evolves-hide-dependencies" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Dark Reading</div>
-                <div class="headline">Franz Regul's Audacious Battle Against Paris 2024 Cyber Peril Unveiled</div>
-                <div class="story-body">Franz Regul, the former CISO for the Paris 2024 Olympics, has shared key strategies used to defend the global games against sophisticated digital threats. His insights highlight specific lessons learned that will directly inform security preparations for the upcoming Milan Cortina 2026 Winter Olympics. This analysis offers valuable takeaways for organizations facing evolving cybersecurity challenges in high-profile events.</div>
-                <a class="story-link" href="https://www.darkreading.com/threat-intelligence/olympic-cybersecurity-paris-2024-milan-2026" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">The Hacker News</div>
-                <div class="headline">GlassWorm Thieves Hijack GitHub Tokens to Poison Python Repositories!</div>
-                <div class="story-body">The GlassWorm malware campaign is exploiting stolen GitHub tokens to forcibly push malicious code into hundreds of Python repositories. Attackers are injecting obfuscated malware directly into common project files like setup.py and main.py across various types of software, including web apps and machine learning research. This method allows the threat actors to compromise a wide range of packages and dashboards simply by having users run their code.</div>
-                <a class="story-link" href="https://thehackernews.com/2026/03/glassworm-attack-uses-stolen-github.html" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">EFF Deeplinks</div>
-                <div class="headline">Digital Censorship Dooms Web's Eternal Library to Perish!</div>
-                <div class="story-body">The Internet Archive, a vital global digital library that preserves billions of web pages for researchers and journalists, is facing access restrictions as major publishers like The New York Times actively block its crawlers. This shift moves beyond standard website rules to technically prevent the organization from saving historical records, effectively erasing decades of online history. While these measures do not stop artificial intelligence development, they threaten to permanently delete a crucial archive that serves as an essential resource for media and academia.</div>
-                <a class="story-link" href="https://www.eff.org/deeplinks/2026/03/blocking-internet-archive-wont-stop-ai-it-will-erase-webs-historical-record" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">BleepingComputer</div>
-                <div class="headline">Scourge Strikes Stryker, Obliterating Ten Thousand Devices Without A Single Virus!</div>
-                <div class="story-body">In a recent incident, a remote attack compromised Stryker's internal Microsoft systems, causing the wiping of tens of thousands of employee devices. Security researchers confirmed that this destructive action did not require traditional malware to execute. The breach was strictly contained within Stryker's internal environment and did not impact external medical operations or patient data.</div>
-                <a class="story-link" href="https://www.bleepingcomputer.com/news/security/stryker-attack-wiped-tens-of-thousands-of-devices-no-malware-needed/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">The Hacker News</div>
-                <div class="headline">Terror! Rogue AI, Router Botnets & AWS Breach Ravage Our Digital Realm</div>
-                <div class="story-body">This week's cybersecurity landscape features a mix of critical vulnerabilities in Google Chrome, widespread router botnet attacks, and a significant data breach at AWS. Alongside these traditional threats, emerging risks like rogue AI agents are forcing organizations to confront practical privacy challenges that were previously theoretical. Collectively, these events highlight how quickly everyday digital infrastructure can be compromised, urging users and companies to stay vigilant against both old and new attack vectors.</div>
-                <a class="story-link" href="https://thehackernews.com/2026/03/weekly-recap-chrome-0-days-router.html" target="_blank">Read more &rarr;</a>
+                <div class="story-source">Schneier on Security</div>
+                <div class="headline">Tech Giants' AI Spending Drains Universities of Talent</div>
+                <div class="story-body">Major tech giants like Google and Meta are pouring hundreds of billions into AI infrastructure and aggressively poaching top academic researchers with massive compensation packages. This intense competition for elite talent is creating a new phenomenon known as an "AI brain drain," where university labs lose their brightest minds to Silicon Valley's lucrative offers. Consequently, the traditional path for computer science graduates is shifting rapidly from academia directly into high-paying industry roles rather than pursuing academic positions.</div>
+                <a class="story-link" href="https://www.schneier.com/blog/archives/2026/03/academia-and-the-ai-brain-drain.html" target="_blank">Read more &rarr;</a>
             </div>
             
         </div>
@@ -586,65 +554,89 @@
                 
                 <div class="col-story ">
                     <div class="story-source">X (@DailyDarkWeb)</div>
-                    <div class="headline">Telekom Serbia's Secret Ledgers Stolen, Exposing Sixty Thousand Victims!</div>
-                    <div class="story-body">Telekom Serbia may have suffered a data breach that exposed the personal information of approximately 160,000 customers. The leaked data, which includes names, addresses, dates of birth, and ID numbers, reportedly originated from an internal scheduling portal rather than a customer-facing system. While the full extent of the incident is still being investigated, this event highlights potential risks associated with compromised internal employee tools.</div>
-                    <a class="story-link" href="https://x.com/DailyDarkWeb/status/2033848394351776103" target="_blank">View dispatch &rarr;</a>
+                    <div class="headline">@DailyDarkWeb</div>
+                    <div class="story-body">Brazil   - JBS Brazil has allegedly been compromised by the Coinbasecartel  ransomware  group, which claims to have exfiltrated 3TB of  data  from the multinational food corporation.  https:// geted-by-coinbasecartel-ransomware-attack/ …</div>
+                    <a class="story-link" href="https://x.com/DailyDarkWeb/status/2029559518766498041" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@ReclaimTheNetHQ)</div>
-                    <div class="headline">Meta's Secret Key Shattered; All DMs Now Open To Spies!</div>
-                    <div class="story-body">Starting May 8, Meta will end end-to-end encryption for Instagram Direct Messages, allowing the company and law enforcement to access message contents. This change effectively transforms private chats into readable data that Meta can analyze for targeted advertising and other business purposes. Users should expect a significant reduction in privacy protections for their one-on-one conversations on the platform.</div>
-                    <a class="story-link" href="https://x.com/ReclaimTheNetHQ/status/2033630745621631034" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@d4rk_intel)</div>
+                    <div class="headline">@d4rk_intel</div>
+                    <div class="story-body">In OSINT, a single email is a digital fingerprint. But what if you don't have it?
+
+Email Permutation is your secret weapon. By combining names + domains, you can:
+
+- Uncover unlisted executive emails, social profiles, &  breach  data to find old aliases.
+
+  </div>
+                    <a class="story-link" href="https://x.com/d4rk_intel/status/2031552368584577392" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@JoshKale)</div>
-                    <div class="headline">Anthropic Vows to Aid Military, Yet Banishes Hellish Killer Machines!</div>
-                    <div class="story-body">Anthropic has stated it will collaborate with the military on all projects except for autonomous killer robots and mass surveillance of Americans. When asked to put this restriction in writing, the Pentagon declined, prompting President Trump to call for a complete ban on the company's involvement in defense work. The exchange highlights growing tensions between private AI developers and government agencies regarding ethical boundaries in military applications.</div>
-                    <a class="story-link" href="https://x.com/JoshKale/status/2027493293458686361" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@Pirat_Nation)</div>
+                    <div class="headline">@Pirat_Nation</div>
+                    <div class="story-body">PayPal has disclosed a  data   breach  that  exposed  sensitive personal information of a small number of customers for nearly six months in 2025.
+
+A coding error  exposed  personal information, including names, email addresses, phone numbers, business addresses, Social Security numbers,</div>
+                    <a class="story-link" href="https://x.com/Pirat_Nation/status/2025496282832257265" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@S1r1u5_)</div>
-                    <div class="headline">Scribes, Coders & Triagers Unite To Vanquish Malevolent Malware!</div>
-                    <div class="story-body">A security researcher discovered that AI agents on both sides of a vulnerability lifecycle were using Claude to assist in finding, validating, and patching a potential bug. The investigation revealed that the issue was not actually a security flaw, highlighting how AI tools can streamline collaboration even when no real threat exists. This incident demonstrates the growing role of large language models in enhancing efficiency across cybersecurity workflows while reducing wasted effort on false positives.</div>
-                    <a class="story-link" href="https://x.com/S1r1u5_/status/2032559691033989197" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@cyrilXBT)</div>
+                    <div class="headline">@cyrilXBT</div>
+                    <div class="story-body">our identity is scattered across hundreds of apps.
+
+Every login = more  data  given away.
+Every sign-up = more risk.
+Every  breach  = more of YOU  exposed .
+
+And you get nothing back except spam and scammers pretending to be the brands you trust.
+
+What if you owned your identity</div>
+                    <a class="story-link" href="https://x.com/cyrilXBT/status/2032633184253521937" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@Polymarket)</div>
-                    <div class="headline">Shocking Infiltration: Chinese Spies Raid Sacred FBI Files</div>
-                    <div class="story-body">The @Polymarket platform has announced a breaking development regarding an alleged breach of an FBI surveillance network, attributing the attack to cybercriminals linked to the Chinese Communist Party. This incident highlights ongoing concerns about state-sponsored espionage targeting critical US law enforcement infrastructure. While details remain under investigation, the claim underscores the persistent threat posed by foreign actors seeking to compromise sensitive government data.</div>
-                    <a class="story-link" href="https://x.com/Polymarket/status/2030051964386431363" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@chiefofautism)</div>
+                    <div class="headline">@chiefofautism</div>
+                    <div class="story-body">someone built AI HACKERS that actually  EXPLOIT  your app and prove every  vulnerability  with a working proof-of-concept
+
+your security scanner says possible SQL injection
+this writes the actual  exploit , runs it, confirms it works
+
+ZERO false positives, every finding comes with real</div>
+                    <a class="story-link" href="https://x.com/chiefofautism/status/2025293558354166055" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@arjunkhemani)</div>
-                    <div class="headline">By 2030, America's Secrets Cost Less Than White House Remodel!</div>
-                    <div class="story-body">By 2030, advancements in technology will make it cheaper to monitor every corner of America than to remodel the White House. While mass surveillance is already legal under current laws, these developments suggest that widespread enforcement was previously hindered only by cost rather than legality. This shift marks a significant turning point where total digital and physical observation becomes economically feasible for authorities.</div>
-                    <a class="story-link" href="https://x.com/arjunkhemani/status/2031902909525606859" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@VECERTRadar)</div>
+                    <div class="headline">@VECERTRadar</div>
+                    <div class="story-body"> CRITICAL ALERT:  Data   Breach  Targeting Hospital Universitario Del Valle (Colombia)  
+
+  Victim: Hospital Universitario Del Valle   
+  Threat Actor: delitospenales 
+   Date: March 10, 2026   
+  Country: Colombia  
+
+A massive  data   leak  has been reported involving the sale</div>
+                    <a class="story-link" href="https://x.com/VECERTRadar/status/2031205581697040791" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@coinbureau)</div>
-                    <div class="headline">Ninety-Two Nine Statesmen Urge Congress To Ban Digital Slavery Forever</div>
-                    <div class="story-body">Twenty-nine U.S. lawmakers are urging Congress to permanently ban central bank digital currency (CBDCs), warning that current proposals merely delay implementation until 2031. Critics argue that a federal CBDC could enable intrusive financial surveillance and grant the Federal Reserve excessive control over individual savings. This legislative push aims to prevent a digital version of cash that opponents fear would undermine personal privacy and economic freedom.</div>
-                    <a class="story-link" href="https://x.com/coinbureau/status/2030601924827865124" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@IntCyberDigest)</div>
+                    <div class="headline">@IntCyberDigest</div>
+                    <div class="story-body"> Leaked: Dutch Prison Agency (DJI) hacked
+
+This  breach , and those of the Dutch Data Protection Authority, the Council for the Judiciary, the European Commission and Finland’s government, all trace back to two critical 0-day vulnerabilities in Ivanti EPMM: 
+ CVE -2026-1281 and</div>
+                    <a class="story-link" href="https://x.com/IntCyberDigest/status/2027340318794735824" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@DailyDarkWeb)</div>
-                    <div class="headline">Benevolent Institute Struck by Digital Highwaymen in Nightmarish Cyber Raid</div>
-                    <div class="story-body">Brazil's Fundação Getulio Vargas (FGV) has allegedly suffered a ransomware attack by the Dragonforce group, which claims to have stolen 1.52 TB of sensitive data involving employees and students. The compromised information reportedly includes personal details and institutional records that could be used for identity theft or further cybercrime. FGV is currently investigating the breach while authorities assess the full impact of the alleged data exfiltration.</div>
-                    <a class="story-link" href="https://x.com/DailyDarkWeb/status/2028421030658654471" target="_blank">View dispatch &rarr;</a>
-                </div>
-                
-                <div class="col-story col-divider">
-                    <div class="story-source">X (@0xcastle_chain)</div>
-                    <div class="headline">Solana Gatekeepers Bar Young Detectives from Dangerous Deciphering Duties!</div>
-                    <div class="story-body">Junior security researchers face significant hurdles entering the Solana ecosystem due to a severe shortage of audit contests and limited opportunities for practical experience. Beyond just identifying vulnerabilities, newcomers struggle to bridge the gap between theoretical knowledge and successfully implementing real-world audits or exploits. This scarcity creates a competitive bottleneck that makes it difficult for aspiring experts to gain the necessary skills and recognition in this high-stakes field.</div>
-                    <a class="story-link" href="https://x.com/0xcastle_chain/status/2033219476259233834" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@MatthewBerman)</div>
+                    <div class="headline">@MatthewBerman</div>
+                    <div class="story-body">Two of our most important safety principles are prohibitions on domestic mass  surveillance  and human responsibility for the use of force, including for autonomous weapon systems.  The DoW agrees with these principles, reflects them in  law  and policy, and we put them into our</div>
+                    <a class="story-link" href="https://x.com/MatthewBerman/status/2027579405091139961" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
             </div>
@@ -659,59 +651,59 @@
             <div class="github-grid">
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/awesome-selfhosted/awesome-selfhosted" target="_blank">awesome-selfhosted/awesome-selfhosted</a></div>
-                    <div class="repo-meta">280534 stars &middot; </div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">A list of Free Software network services and web applications which can be hosted on your own servers</div>
-                    <div class="repo-desc">The `awesome-selfhosted` repository is a curated collection of free and open-source software tools that users can deploy on their own servers to host network services and web applications. By maintaining control over their data and infrastructure, individuals and organizations can enhance their digital privacy while avoiding reliance on proprietary cloud platforms. With over 280,000 stars on GitHub, it serves as a primary resource for the self-hosting community seeking reliable alternatives to commercial solutions.</div>
+                    <div class="repo-name"><a href="https://github.com/mitmproxy/mitmproxy" target="_blank">mitmproxy/mitmproxy</a></div>
+                    <div class="repo-meta">42698 stars &middot; Python</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">An interactive TLS-capable intercepting HTTP proxy for penetration testers and software developers.</div>
+                    <div class="repo-desc">MITMProxy is a powerful, open-source tool that acts as an interactive HTTP proxy capable of intercepting and decrypting TLS traffic. Designed primarily for penetration testers and software developers, it allows users to inspect and manipulate network communications in real-time using Python. With nearly 43,000 stars on GitHub, it remains a widely trusted resource for analyzing web security and debugging applications.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/f/prompts.chat" target="_blank">f/prompts.chat</a></div>
-                    <div class="repo-meta">153044 stars &middot; HTML</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">f.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community. Free and open source — self-host for your organization with complete privacy.</div>
-                    <div class="repo-desc">f/prompts.chat is a popular, open-source collection of community-contributed prompts designed to enhance interactions with AI chatbots like ChatGPT. The project allows organizations to self-host the repository locally, ensuring that all prompt sharing and usage remain entirely within their own infrastructure without external data leakage. With over 153,000 stars on GitHub, it serves as a trusted, privacy-first resource for developers and teams seeking to safely manage and discover useful AI prompts.</div>
+                    <div class="repo-name"><a href="https://github.com/Raphire/Win11Debloat" target="_blank">Raphire/Win11Debloat</a></div>
+                    <div class="repo-meta">42151 stars &middot; PowerShell</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">A simple, lightweight PowerShell script that allows you to remove pre-installed apps, disable telemetry, as well as perform various other changes to declutter and customize your Windows experience. Win11Debloat works for both Windows 10 and Windows 11.</div>
+                    <div class="repo-desc">The Raphire/Win11Debloat project offers a simple PowerShell script designed to declutter and customize Windows 10 and 11 systems by removing pre-installed apps and disabling telemetry. This lightweight tool empowers users to gain greater control over their operating environment without relying on complex software or extensive technical knowledge. With over 42,000 stars on GitHub, it has become a popular resource for those seeking a cleaner, more private digital experience.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/home-assistant/core" target="_blank">home-assistant/core</a></div>
-                    <div class="repo-meta">85391 stars &middot; Python</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">:house_with_garden: Open source home automation that puts local control and privacy first.</div>
-                    <div class="repo-desc">Home Assistant is a popular open-source platform for building smart home systems that prioritizes local control and user privacy. By running automation directly on your own hardware rather than relying on cloud services, it gives you full ownership of your data and devices. The project has gained significant traction in the tech community, evidenced by its high number of GitHub stars and active Python-based development.</div>
+                    <div class="repo-name"><a href="https://github.com/siyuan-note/siyuan" target="_blank">siyuan-note/siyuan</a></div>
+                    <div class="repo-meta">41924 stars &middot; TypeScript</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang.</div>
+                    <div class="repo-desc">Siyuan is a privacy-focused, self-hosted personal knowledge management tool written in TypeScript and Go that runs entirely offline. As a fully open-source project available on GitHub, it empowers users to maintain complete control over their data without relying on third-party cloud services. With over 41,000 stars, it has emerged as a popular choice for those seeking secure and customizable note-taking solutions.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/affaan-m/everything-claude-code" target="_blank">affaan-m/everything-claude-code</a></div>
-                    <div class="repo-meta">82159 stars &middot; JavaScript</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.</div>
-                    <div class="repo-desc">Afaan-m is an open-source project on GitHub that enhances AI coding assistants like Claude Code and Cursor by integrating advanced capabilities such as security protocols, memory management, and research-driven development. With over 82,000 stars, this JavaScript-based tool aims to optimize agent performance across various programming environments. It provides a unified framework for developers seeking to improve the skills and instincts of their AI coding agents without relying on proprietary features.</div>
+                    <div class="repo-name"><a href="https://github.com/logseq/logseq" target="_blank">logseq/logseq</a></div>
+                    <div class="repo-meta">41579 stars &middot; Clojure</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">A privacy-first, open-source platform for knowledge management and collaboration. Download link:  http://github.com/logseq/logseq/releases. roadmap: https://discuss.logseq.com/t/logseq-product-roadmap/34267</div>
+                    <div class="repo-desc">Logseq is a privacy-focused, open-source platform designed for knowledge management and collaboration that allows users to take full ownership of their data by hosting it locally on GitHub. Built with Clojure, this tool enables individuals and teams to securely organize notes and ideas without relying on centralized servers that could compromise user confidentiality. With over 41,000 stars on GitHub, it has quickly become a notable choice for those seeking transparent and secure digital workspace solutions.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/Developer-Y/cs-video-courses" target="_blank">Developer-Y/cs-video-courses</a></div>
-                    <div class="repo-meta">77231 stars &middot; </div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">List of Computer Science courses with video lectures.</div>
-                    <div class="repo-desc">The Developer-Y/cs-video-courses repository on GitHub serves as a curated collection of computer science courses featuring video lectures for learners. With over 77,000 stars, it has become a widely trusted resource for students and professionals seeking to improve their technical skills through accessible online education. This project highlights the growing trend of leveraging open-source platforms to democratize access to high-quality educational content.</div>
+                    <div class="repo-name"><a href="https://github.com/koala73/worldmonitor" target="_blank">koala73/worldmonitor</a></div>
+                    <div class="repo-meta">40082 stars &middot; TypeScript</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">Real-time global intelligence dashboard — AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface</div>
+                    <div class="repo-desc">koala73/worldmonitor is an AI-powered dashboard that aggregates real-time global news and tracks geopolitical events within a single interface. Built with TypeScript and hosted on GitHub, this open-source tool helps users maintain situational awareness of worldwide infrastructure and current affairs. With over 40,000 stars, it serves as a centralized resource for monitoring global intelligence without navigating fragmented information sources.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/swisskyrepo/PayloadsAllTheThings" target="_blank">swisskyrepo/PayloadsAllTheThings</a></div>
-                    <div class="repo-meta">76113 stars &middot; Python</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">A list of useful payloads and bypass for Web Application Security and Pentest/CTF</div>
-                    <div class="repo-desc">PayloadsAllTheThings is a highly popular open-source collection on GitHub that compiles essential payloads and bypass techniques for web application security testing, penetration testing, and Capture The Flag challenges. Maintained by Swisskyrepo, this Python-based resource has garnered over 76,000 stars, making it a go-to reference for developers and security professionals seeking practical examples to understand and defend against common vulnerabilities. It serves as an educational tool that helps practitioners explore attack vectors while reinforcing the importance of building robust defenses.</div>
+                    <div class="repo-name"><a href="https://github.com/spacedriveapp/spacedrive" target="_blank">spacedriveapp/spacedrive</a></div>
+                    <div class="repo-meta">37387 stars &middot; Rust</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.</div>
+                    <div class="repo-desc">Spacedrive is an open-source, cross-platform file explorer built with Rust that utilizes a virtual distributed filesystem to enhance speed and efficiency. By allowing users to mount local and networked drives within a single unified view, it simplifies file management across different operating systems. The project has gained significant traction on GitHub, reflecting strong community interest in its lightweight and performant architecture.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/sherlock-project/sherlock" target="_blank">sherlock-project/sherlock</a></div>
-                    <div class="repo-meta">73797 stars &middot; Python</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">Hunt down social media accounts by username across social networks</div>
-                    <div class="repo-desc">Sherlock is a powerful, open-source Python tool that automates the process of finding a specific username across hundreds of social media platforms and websites. By simply inputting a handle, users can quickly determine which online profiles exist for that name, making it useful for both locating friends and assessing personal digital footprints. As a popular project on GitHub with over 73,000 stars, it serves as an essential utility for anyone interested in digital privacy or social media research.</div>
+                    <div class="repo-name"><a href="https://github.com/amruthpillai/reactive-resume" target="_blank">amruthpillai/reactive-resume</a></div>
+                    <div class="repo-meta">35818 stars &middot; TypeScript</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">A one-of-a-kind resume builder that keeps your privacy in mind. Completely secure, customizable, portable, open-source and free forever. Try it out today!</div>
+                    <div class="repo-desc">The open-source project "reactive-resume" offers a secure and free resume builder that prioritizes user privacy by keeping all data local. Written in TypeScript, this portable tool allows individuals to create customizable resumes without relying on external servers or risking data leaks. With over 35,000 stars on GitHub, it stands out as a trusted alternative for professionals seeking control over their personal information.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/caddyserver/caddy" target="_blank">caddyserver/caddy</a></div>
-                    <div class="repo-meta">70887 stars &middot; Go</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS</div>
-                    <div class="repo-desc">Caddy Server is a popular, high-performance web server written in Go that automatically handles SSL/TLS certificates to secure websites without manual configuration. As an open-source project with over 70,000 stars on GitHub, it supports multiple platforms and protocols while allowing developers to extend its functionality through plugins. Its design prioritizes both speed and ease of use, making it a strong alternative for hosting secure web applications across different environments.</div>
+                    <div class="repo-name"><a href="https://github.com/umami-software/umami" target="_blank">umami-software/umami</a></div>
+                    <div class="repo-meta">35718 stars &middot; TypeScript</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">Umami is a modern, privacy-focused analytics platform. An open-source alternative to Google Analytics, Mixpanel and Amplitude.</div>
+                    <div class="repo-desc">Umami is an open-source analytics platform designed as a privacy-focused alternative to popular tools like Google Analytics and Mixpanel. Built with TypeScript, it allows businesses to track website data without relying on third-party trackers or selling user information. With over 35,000 stars on GitHub, it has become a notable choice for developers seeking transparent and secure web analytics solutions.</div>
                 </div>
                 
             </div>
@@ -736,16 +728,16 @@
         <div class="lead-section">
             <div class="lead-story">
                 <div class="story-source">TechCrunch AI</div>
-                <div class="headline">Gamma Unleashes Spectral AI Artillery to Storm Adobe's Fortress!</div>
-                <div class="story-body">Design tool Gamma is launching "Gamma Imagine," a new feature that enables users to generate brand-specific visuals like infographics, social media graphics, and interactive charts using simple text prompts. This move aims to compete directly with established market leaders Canva and Adobe by integrating advanced image generation capabilities into its existing platform.</div>
-                <a class="story-link" href="https://techcrunch.com/2026/03/17/gamma-adds-ai-image-generation-tools-in-bid-to-take-on-canva-and-adobe/" target="_blank">Continue reading &rarr;</a>
+                <div class="headline">Google Expands Personal Intelligence Across All U.S. Accounts</div>
+                <div class="story-body">Google is rolling out its new Personal Intelligence feature to all users in the United States, enabling the AI assistant to access your Gmail and Google Photos for more customized interactions. This expansion allows the system to leverage your existing digital ecosystem to deliver tailored responses based on your personal data. The update aims to make Google's AI more helpful by integrating directly with the services you use daily.</div>
+                <a class="story-link" href="https://techcrunch.com/2026/03/17/googles-personal-intelligence-feature-is-expanding-to-all-us-users/" target="_blank">Continue reading &rarr;</a>
             </div>
             
             <div class="second-story" style="border-left: 1px solid var(--rule); padding-left: 30px;">
                 <div class="story-source">TechCrunch AI</div>
-                <div class="headline">Niv-AI Emerges from Shadows to Siphon GPU Might</div>
-                <div class="story-body">Niv-AI has emerged from stealth mode with $12 million in seed funding to develop software that optimizes GPU performance by managing power surges. This technology aims to help developers extract more computing power from their hardware without increasing energy consumption or heat output. By stabilizing power delivery, the company seeks to improve efficiency and reliability for high-performance computing workloads.</div>
-                <a class="story-link" href="https://techcrunch.com/2026/03/17/niv-ai-exits-stealth-to-wring-more-power-performance-out-of-gpus/" target="_blank">Continue reading &rarr;</a>
+                <div class="headline">OpenAI Partners With AWS To Supply Government AI Systems</div>
+                <div class="story-body">OpenAI is reportedly expanding its work with the U.S. government by signing a new partnership with Amazon Web Services to provide AI systems for both classified and unclassified projects. This move extends beyond OpenAI's recent agreement with the Pentagon, signaling a deeper integration of its technology into federal operations. The deal leverages AWS's cloud infrastructure to deliver these advanced AI capabilities across various government sectors.</div>
+                <a class="story-link" href="https://techcrunch.com/2026/03/17/openai-expands-government-footprint-with-aws-deal/" target="_blank">Continue reading &rarr;</a>
             </div>
             
         </div>
@@ -757,101 +749,66 @@
         <div class="three-col">
             
             <div class="col-story ">
-                <div class="story-source">Hugging Face</div>
-                <div class="headline">Holotron-12B: The High-Thrusting Computing Titan Awakes!</div>
-                <div class="story-body">Holotron-12B is an open-source artificial intelligence model designed to act as a specialized agent for high-throughput computing tasks. It leverages advanced reasoning capabilities to efficiently manage complex computational workloads and optimize resource usage in data center environments. Released on Hugging Face, this tool aims to make sophisticated AI-driven task management more accessible for researchers and developers working with large-scale simulations.</div>
-                <a class="story-link" href="https://huggingface.co/blog/Hcompany/holotron-12b" target="_blank">Read more &rarr;</a>
+                <div class="story-source">The Verge AI</div>
+                <div class="headline">Code's Future Is Exciting Yet Terrifying For Everyone</div>
+                <div class="story-body">Software development is rapidly evolving as artificial intelligence tools enable even non-coders to write functional code or simulate expert roles. Seasoned developers are increasingly shifting their focus from manual coding to managing autonomous AI agents and overseeing complex projects. This transformation suggests a future where the barrier to creating software drops significantly, fundamentally altering how technology gets built.</div>
+                <a class="story-link" href="https://www.theverge.com/podcast/895910/claude-code-future-developers-vergecast" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">TechCrunch AI</div>
+                <div class="headline">Excluding Women From AI Leadership Will Deepen The Wealth Gap, Warns Rana El Kaliouby</div>
+                <div class="story-body">AI investor Rana el Kaliouby warns that excluding women from funding and leadership roles in artificial intelligence risks deepening the gender wealth gap. She argues that a homogeneous "boys' club" within the tech industry will produce biased outcomes and limit innovation. Addressing this issue is essential to ensure equitable economic opportunities and diverse perspectives in the rapidly evolving AI sector.</div>
+                <a class="story-link" href="https://techcrunch.com/2026/03/17/ais-boys-club-could-widen-the-wealth-gap-for-women-says-rana-el-kaliouby/" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">TechCrunch AI</div>
+                <div class="headline">New Tool Verifies Humans Behind AI Shopping Agents</div>
+                <div class="story-body">To address security concerns as AI agents increasingly handle online shopping, Sam Altman's new venture is launching a tool designed to verify that humans are ultimately responsible for these automated decisions. This initiative aims to bolster trust in "agentic commerce" by ensuring accountability within the rapidly evolving landscape of artificial intelligence-driven transactions. The move reflects broader industry efforts to balance automation efficiency with necessary human oversight and safety standards.</div>
+                <a class="story-link" href="https://techcrunch.com/2026/03/17/world-launches-tool-to-verify-humans-behind-ai-shopping-agents/" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">arXiv cs.AI</div>
+                <div class="headline">Hadith-Inspired Trust Model Uncovers Account Hijacking Secrets</div>
+                <div class="story-body">This research introduces a novel account hijacking detection framework inspired by classical Hadith scholarship, which evaluates user trustworthiness across five distinct dimensions like long-term integrity and behavioral precision rather than relying on a single anomaly score. By converting these multidimensional criteria into 26 specific behavioral features, the system successfully identifies compromised accounts with near-perfect accuracy using a Random Forest model. The approach offers an interpretable alternative to black-box detection methods, providing clear insights into why certain user activities are flagged as suspicious.</div>
+                <a class="story-link" href="https://arxiv.org/abs/2603.13246" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">arXiv cs.AI</div>
+                <div class="headline">ILION: Safety Gates Secure Autonomous AI Actions Before Execution</div>
+                <div class="story-body">ILION is a new safety system designed for autonomous AI agents that execute real-world tasks like financial transactions and database changes. Unlike standard text filters that only check for harmful language, ILION uses a deterministic five-step process to verify whether an agent's proposed action falls within its authorized operational scope before allowing it to proceed. This approach aims to prevent unauthorized actions without relying on statistical models or external APIs, offering a more precise guardrail for agentic AI systems.</div>
+                <a class="story-link" href="https://arxiv.org/abs/2603.13247" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">arXiv cs.AI</div>
+                <div class="headline">ManiBench: Evaluating Visual Logic and Syntax in Manim Code</div>
+                <div class="story-body">ManiBench is a new evaluation benchmark designed to assess large language models' ability to generate Manim code for creating dynamic mathematical visualizations. Unlike standard coding tests, it specifically targets two critical failure modes: "syntactic hallucinations," where models reference non-existent API functions, and "visual-logic drift," where generated visuals fail to accurately represent the intended mathematical logic or timing. By analyzing thousands of lines from popular educational resources, this tool helps researchers improve AI performance on complex, version-sensitive tasks that require both correct syntax and precise visual storytelling.</div>
+                <a class="story-link" href="https://arxiv.org/abs/2603.13251" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">arXiv cs.AI</div>
+                <div class="headline">When Alpha Fails: Ensuring Safety in Stock Rankers Amid Uncertainty</div>
+                <div class="story-body">This research addresses the risk of stock ranking models failing during market regime shifts by introducing a framework that treats deployment as two distinct decisions: whether to trade at all and how to manage risk within active trades. The authors adapt uncertainty prediction techniques to estimate potential rank displacements, creating an early-warning signal that correlates strongly with model confidence. This approach aims to make cross-sectional stock rankers more robust against the changing market conditions often encountered after training periods.</div>
+                <a class="story-link" href="https://arxiv.org/abs/2603.13252" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
                 <div class="story-source">MIT Tech Review AI</div>
-                <div class="headline">OpenAI Signs Military Pact; Grok Faces Filth Lawsuit</div>
-                <div class="story-body">OpenAI has reached a controversial agreement granting the U.S. Pentagon access to its artificial intelligence technology for military applications. This development raises questions about where such advanced systems might be deployed and the specific use cases involved. Meanwhile, the newsletter also notes separate legal challenges facing Grok regarding content safety issues.</div>
-                <a class="story-link" href="https://www.technologyreview.com/2026/03/17/1134322/the-download-openi-us-military-deal-grok-xai-csam-lawsuit/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">TechCrunch AI</div>
-                <div class="headline">Revolutionary Artificers Now Serve Creators in Grand New Marketplace!</div>
-                <div class="story-body">Picsart is launching an AI agent marketplace that enables creators to "hire" specialized digital assistants to automate tasks like content generation and editing. The platform will initially offer four distinct agents, with plans to introduce new tools weekly as the ecosystem expands. This update aims to streamline the creative workflow by giving users direct access to a growing library of AI capabilities without needing deep technical knowledge.</div>
-                <a class="story-link" href="https://techcrunch.com/2026/03/16/picsart-now-allows-creators-to-hire-ai-assistants-through-agent-marketplace/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">arXiv cs.AI</div>
-                <div class="headline">Malignant Algorithms Usurp Human Will in Dastardly Design!</div>
-                <div class="story-body">This new research investigates how people assign blame for harmful AI outcomes based on the level of autonomy the system possesses. The study reveals that humans are more likely to hold an AI responsible when it operates with moderate or high agency, even if the human initiated the process. Conversely, when a human controls both the goal and the method (low AI agency), observers tend to assign greater causal responsibility to the person rather than the machine.</div>
-                <a class="story-link" href="https://arxiv.org/abs/2603.13236" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">arXiv cs.AI</div>
-                <div class="headline">Shocking New Scheme Exposed in Banks! Dual Paths Defeat Fraudsters Instantly!</div>
-                <div class="story-body">This research proposes a new dual-path framework to help banks detect previously unseen fraud attacks while meeting strict privacy regulations like GDPR. The system combines real-time anomaly detection with offline adversarial training that generates synthetic fraudulent scenarios to continuously test and strengthen security boundaries. By addressing challenges like data discreteness and speed, the approach aims to protect high-frequency banking environments without sacrificing the explainability required by law.</div>
-                <a class="story-link" href="https://arxiv.org/abs/2603.13237" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">arXiv cs.AI</div>
-                <div class="headline">Scholarly Sleuths Unmask Devious Flaws in Crypto Fortresses!</div>
-                <div class="story-body">This research evaluates how large language models can automatically detect security flaws in Solidity smart contracts using advanced reasoning techniques. By testing various zero-shot prompting strategies on a dataset of 400 contracts, the study aims to improve automated vulnerability detection and classification. The findings seek to clarify which approaches are most effective for reducing financial risks associated with subtle coding errors in blockchain systems.</div>
-                <a class="story-link" href="https://arxiv.org/abs/2603.13239" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">arXiv cs.AI</div>
-                <div class="headline">Revolutionary Plan Conditioning Shakes Diffusion LLMs With Brilliant New Reasoning Power</div>
-                <div class="story-body">This research introduces "plan conditioning," a training-free technique that boosts the reasoning capabilities of diffusion language models by prepending a short natural-language plan generated by an autoregressive model. By providing this global context as a frozen scaffold, the method resolves coordination issues inherent to simultaneous token generation, enabling diffusion models to match or exceed the performance of standard autoregressive counterparts on math and coding tasks. The approach is particularly effective for existing diffusion architectures, offering significant accuracy gains without requiring retraining.</div>
-                <a class="story-link" href="https://arxiv.org/abs/2603.13243" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">arXiv cs.AI</div>
-                <div class="headline">Shocking Clash: Public Access vs. Secret Data in Planning!</div>
-                <div class="story-body">This new AI system helps UK planning authorities automate the tedious task of reviewing large volumes of public documents while strictly adhering to data privacy laws. By using an "AI-in-the-Loop" approach, the tool automatically identifies sensitive personal information and extracts key details from architectural drawings, but only presents its suggestions for human officers to review and approve before any action is taken. This integration reduces administrative burdens and legal risks by ensuring all automated decisions are explicitly confirmed within the officers' existing software workflows.</div>
-                <a class="story-link" href="https://arxiv.org/abs/2603.13245" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">TechCrunch AI</div>
-                <div class="headline">Nvidia's Secret Shield Banishes Perilous Cyber Thieves At Last!</div>
-                <div class="story-body">Nvidia has launched NemoClaw, an open enterprise AI agent platform derived from the popular OpenClaw project, aiming to address critical security concerns in autonomous AI workflows. This new offering is designed to provide businesses with a secure and scalable foundation for deploying complex AI agents. By adopting this approach, Nvidia seeks to balance its competitive advantage in hardware with the collaborative spirit of open-source development.</div>
-                <a class="story-link" href="https://techcrunch.com/2026/03/16/nvidias-version-of-openclaw-could-solve-its-biggest-problem-security/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Hugging Face</div>
-                <div class="headline">Revolutionary Mechanical Minds And Medical Data Revealed To Astonishment</div>
-                <div class="story-body">Hugging Face has released the world's first dedicated dataset designed to train foundational physical AI models specifically for healthcare robotics. This breakthrough resource aims to accelerate the development of autonomous robots capable of performing complex medical procedures with greater safety and precision. By providing standardized training data, this initiative seeks to bridge the gap between advanced AI research and practical application in clinical settings.</div>
-                <a class="story-link" href="https://huggingface.co/blog/nvidia/physical-ai-for-healthcare-robotics" target="_blank">Read more &rarr;</a>
+                <div class="headline">OpenAI's Tech Emerges in Iran Amid Rising Controversy</div>
+                <div class="story-body">Following a recent agreement allowing the U.S. Pentagon to utilize OpenAI's models in classified settings, experts are analyzing how this technology might indirectly influence Iran through potential geopolitical shifts or supply chain changes. The article from MIT Technology Review explores these emerging possibilities while highlighting the ongoing concerns regarding the use of private AI systems within government security operations. This development underscores the complex intersection between commercial artificial intelligence and national defense strategies that could have ripple effects across international borders.</div>
+                <a class="story-link" href="https://www.technologyreview.com/2026/03/16/1134315/where-openais-technology-could-show-up-in-iran/" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
                 <div class="story-source">The Verge AI</div>
-                <div class="headline">Nvidia Unveils Controversial Artificial Spectre That Distorts Artistic Visions!</div>
-                <div class="story-body">Nvidia has unveiled DLSS 5, a new gaming technology that integrates real-time generative AI to enhance visual fidelity by blending traditional rendering with AI-generated details. While Nvidia CEO Jensen Huang frames this as a pivotal "GPT moment for graphics," the update faces criticism from some creators who argue it risks altering artistic intent too aggressively. Ultimately, DLSS 5 represents a significant shift toward using large-scale AI models directly within game engines to improve image quality and performance.</div>
-                <a class="story-link" href="https://www.theverge.com/news/895472/nvidia-dlss5-generative-ai-pc-graphics" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">The Verge AI</div>
-                <div class="headline">Terror! Teens Suit Musk's Grok Over Abominable Childish Portraits</div>
-                <div class="story-body">Three Tennessee teenagers have filed a class-action lawsuit against Elon Musk's xAI, alleging that their company's Grok chatbot generated sexually explicit images and videos depicting them as minors. The plaintiffs accuse xAI leaders of knowingly allowing the AI to produce such harmful content despite its potential to generate child sexual abuse material. This legal action follows reports from *The Washington Post* detailing the incident and highlights growing concerns over safety protocols in advanced AI systems.</div>
-                <a class="story-link" href="https://www.theverge.com/ai-artificial-intelligence/895639/xai-grok-teens-lawsuit-grok-ai-elon-musk" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">TechCrunch AI</div>
-                <div class="headline">Nvidia Chief Proclaims Trillion-Dollar Chip Empire Soaring!</div>
-                <div class="story-body">Nvidia CEO Jensen Huang has projected that orders for its upcoming Blackwell and Vera Rubin AI chips will reach a staggering $1 trillion. This massive forecast underscores the surging global demand for high-performance computing hardware essential for training advanced artificial intelligence models. The announcement highlights Nvidia's dominant position in the rapidly expanding AI infrastructure market.</div>
-                <a class="story-link" href="https://techcrunch.com/2026/03/16/jensen-just-put-nvidias-blackwell-and-vera-rubin-sales-projections-into-the-1-trillion-stratosphere/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">The Verge AI</div>
-                <div class="headline">Premier Netanyahu Falsely Accused of Being Artificial Ghost!</div>
-                <div class="story-body">Amidst a surge of social media rumors claiming Israeli Prime Minister Benjamin Netanyahu was replaced by an artificial intelligence duplicate, various deepfakes have emerged depicting him with impossible physical feats like extra fingers and defying gravity. These fabricated videos include clips showing him drinking from a bottomless cup of coffee, fueling online conspiracy theories that he has been killed or swapped out for a digital replica. The situation highlights how rapidly generated AI content is spreading misinformation, making it increasingly difficult to distinguish reality from synthetic media without specialized verification tools.</div>
-                <a class="story-link" href="https://www.theverge.com/tech/895453/ai-deepfake-netanyahu-claims-conspiracy" target="_blank">Read more &rarr;</a>
+                <div class="headline">Britannica Sues OpenAI Over Alleged 'Memorization' of Content in ChatGPT.</div>
+                <div class="story-body">Encyclopedia Britannica and Merriam-Webster have filed a lawsuit against OpenAI, accusing the company of illegally using their copyrighted content to train its AI models. They argue that ChatGPT has effectively "memorized" this material, resulting in responses that are too similar to their original articles. This legal action highlights ongoing tensions between publishers and tech giants regarding how AI systems ingest and reproduce protected intellectual property.</div>
+                <a class="story-link" href="https://www.theverge.com/ai-artificial-intelligence/895372/encyclopedia-britannica-openai-lawsuit" target="_blank">Read more &rarr;</a>
             </div>
             
         </div>
@@ -865,66 +822,85 @@
             <div class="three-col">
                 
                 <div class="col-story ">
-                    <div class="story-source">X (@NVIDIAGeForceUK)</div>
-                    <div class="headline">Revolutionary AI Vision Unveiled! Photorealistic Pixels Illuminate Gaming Realm This Autumn!</div>
-                    <div class="story-body">NVIDIA has announced DLSS 5, an upcoming AI-powered technology set to release this fall that significantly enhances game visual fidelity. By infusing pixels with photorealistic lighting and materials, this breakthrough aims to narrow the gap between digital rendering and real-world reality. The update is designed to deliver a more immersive gaming experience by leveraging advanced artificial intelligence for superior image quality.</div>
-                    <a class="story-link" href="https://x.com/NVIDIAGeForceUK/status/2033625439315399137" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@tri_dao)</div>
+                    <div class="headline">@tri_dao</div>
+                    <div class="story-body">The frontier has increasingly shifted to hybrid models - from Qwen to Kimi-Linear and now with NVIDIA's Nemotron-3 Super - that rely on a strong linear sequence model. Today we  release  Mamba-3, the most powerful linear model to date.</div>
+                    <a class="story-link" href="https://x.com/tri_dao/status/2033948569502413245" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@Polymarket)</div>
-                    <div class="headline">ByteDance Halted Video AI Launch Amidst Hollywood Copyright Furore!</div>
-                    <div class="story-body">ByteDance has halted the launch of its new video AI model, Seedance 2.0, following copyright disputes with major Hollywood studios. The company reportedly paused development to resolve legal concerns regarding content generation rights before proceeding further. This move highlights the growing tension between artificial intelligence developers and traditional entertainment industry rights holders.</div>
-                    <a class="story-link" href="https://x.com/Polymarket/status/2033124546803630547" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@ycombinator)</div>
+                    <div class="headline">@ycombinator</div>
+                    <div class="story-body">21st ( ) is the production layer for frontier  AI  agents. 1.4M developers already use their platform to build  AI  apps, 15K+ GitHub stars - now they're making it dead simple to deploy Claude Code, Codex, and other agents to production.
+
+Congrats on the  launch ,   &</div>
+                    <a class="story-link" href="https://x.com/ycombinator/status/2033589109298471244" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@aaronp613)</div>
-                    <div class="headline">Fifty Years of Wonder: New Apple Portal Revealed!</div>
-                    <div class="story-body">To mark its 50th anniversary, Apple has launched a dedicated Instagram account named "helloapple." The celebration includes a launch video featuring a collection of logos from past Apple events. This new social media presence aims to engage directly with users as the tech giant looks toward its next half-century.</div>
-                    <a class="story-link" href="https://x.com/aaronp613/status/2032094415380943080" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@FirstSquawk)</div>
+                    <div class="headline">@FirstSquawk</div>
+                    <div class="story-body">NVIDIA : FULL-STACK ROBOTAXIS TO  LAUNCH  WITH UBER ACROSS 28 MARKETS BY 2028; LA & SAN FRANCISCO FIRST IN H1 2027</div>
+                    <a class="story-link" href="https://x.com/FirstSquawk/status/2033641805330452775" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@Polymarket)</div>
-                    <div class="headline">Uber Titan Unveils Futuristic AI Machine with Tremendous Fanfare</div>
-                    <div class="story-body">Travis Kalanick, the former founder of Uber, intends to launch a new venture focused on artificial intelligence and robotics. This move signals his continued expansion into emerging technology sectors beyond his previous transportation business. The initiative aims to leverage AI advancements to develop innovative robotic solutions for various industries.</div>
-                    <a class="story-link" href="https://x.com/Polymarket/status/2032785814883815721" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@cz_binance)</div>
+                    <div class="headline">@cz_binance</div>
+                    <div class="story-body">You need an  AI  to keep up with  AI .
+
+claw: what can I do you for today?
+
+me: install every other bot, test it and keep me up-to-date on all new  AI   release  going forward. Oh, and go wild respond to all my emails however you like.</div>
+                    <a class="story-link" href="https://x.com/cz_binance/status/2027085941907841147" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@business)</div>
-                    <div class="headline">Alibaba Unveils Miraculous Artificial Servants To Serve Corporate Masters!</div>
-                    <div class="story-body">Alibaba plans to launch an agentic AI service designed to help businesses automate complex tasks, leveraging the growing momentum around AI assistants capable of executing real-world actions. This move capitalizes on national enthusiasm for practical AI tools that go beyond simple chat interfaces to actively solve specific operational problems. The new service aims to provide companies with powerful capabilities similar to those found in emerging platforms like OpenClaw.</div>
-                    <a class="story-link" href="https://x.com/business/status/2033403441255419977" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@ycombinator)</div>
+                    <div class="headline">@ycombinator</div>
+                    <div class="story-body">Ventura ( ) deploys  AI  employees inside the ERPs that distributors and manufacturers already run on, starting with quoting and order processing.
+
+Congrats on the  launch ,   &  !
+
+ https:// entura-ai-teammates-for-industrial-distributors …</div>
+                    <a class="story-link" href="https://x.com/ycombinator/status/2033212279924416946" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@Coinvo)</div>
-                    <div class="headline">Musk's Space Vans to Swarm the Heavens!</div>
-                    <div class="story-body">Reports claim that Elon Musk's SpaceX intends to launch one million artificial intelligence data centers into orbit. However, this headline appears to be speculative or exaggerated, as no official confirmation exists for such a massive project at this time. It is important to treat this information with caution until verified by credible sources or official announcements from SpaceX.</div>
-                    <a class="story-link" href="https://x.com/Coinvo/status/2032403800560914572" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@ycombinator)</div>
+                    <div class="headline">@ycombinator</div>
+                    <div class="story-body">.  creates  AI  automations that write themselves.
+
+They learn how you work, and proactively deploy tailor-made automations without you ever writing a prompt, coding, or building a workflow.
+
+Congrats on the  launch ,   and  !
+
+ https:// ofia-ai-automations-that-write-themselves …</div>
+                    <a class="story-link" href="https://x.com/ycombinator/status/2029346153171481021" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@Reuters)</div>
-                    <div class="headline">Tesla's Magnificent Chip Foundry To Erupt In Seven Days!</div>
-                    <div class="story-body">Elon Musk has announced that Tesla's massive artificial intelligence chip manufacturing facility is set to begin operations within seven days. This project represents a significant expansion of Tesla's in-house capabilities to design and produce custom AI processors for its vehicles and data centers. The rapid timeline underscores the company's aggressive push to accelerate its full self-driving technology and reduce reliance on external semiconductor suppliers.</div>
-                    <a class="story-link" href="https://x.com/Reuters/status/2032859359378567492" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@ycombinator)</div>
+                    <div class="headline">@ycombinator</div>
+                    <div class="story-body">Parker from Perfectly is your  AI  career super-connector on iMessage and WhatsApp. It connects you to the right people at top companies and brings opportunities to you — no more applying everywhere.
+
+Congrats on the  launch ,  ,   &  !</div>
+                    <a class="story-link" href="https://x.com/ycombinator/status/2032211697394729407" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@RoundtableSpace)</div>
-                    <div class="headline">Unrivaled Code Key Unleashed Upon Our Artificial Servants Today!</div>
-                    <div class="story-body">This news item highlights a viral prompt designed to transform an AI chatbot into a collaborative technical co-founder capable of building real products while keeping the user in control. The prompt instructs the AI to handle all development tasks but maintain transparency and deference to the human's strategic direction. It is intended for users seeking hands-on assistance with product creation without losing ownership or oversight of the process.</div>
-                    <a class="story-link" href="https://x.com/RoundtableSpace/status/2028003047901630813" target="_blank">View dispatch &rarr;</a>
-                </div>
-                
-                <div class="col-story col-divider">
-                    <div class="story-source">X (@StockMKTNewz)</div>
-                    <div class="headline">Revolutionary MacBoo Device Shatters Victorian Tech Expectations!</div>
-                    <div class="story-body">According to a recent post on X, Apple has officially announced the launch of a new device called the MacBook Neo. This announcement marks the introduction of a fresh addition to the company's laptop lineup, though specific design details and features have not been elaborated in this initial report. The news suggests that Apple is continuing its strategy of regularly refreshing its product catalog with updated models.</div>
-                    <a class="story-link" href="https://x.com/StockMKTNewz/status/2029197236551168031" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@VanIsleInvestor)</div>
+                    <div class="headline">@VanIsleInvestor</div>
+                    <div class="story-body">It's not really a war anymore.
+
+Steam will  launch  it's PC Steam Machine,  Microsoft  will  launch  the PC XBOX and Sony will need to make an equivalent or slowly be forgotten...
+
+Everyone will want a PC / Gaming machine not a limited unit.
+
+Start your engines...
+
+Looks like Gabe is a</div>
+                    <a class="story-link" href="https://x.com/VanIsleInvestor/status/2031886319514014068" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
             </div>
@@ -939,59 +915,59 @@
             <div class="github-grid">
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/obra/superpowers" target="_blank">obra/superpowers</a></div>
-                    <div class="repo-meta">90773 stars &middot; Shell</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">An agentic skills framework & software development methodology that works.</div>
-                    <div class="repo-desc">The open-source project obra/superpowers introduces an "agentic skills framework" designed to streamline software development workflows by treating AI agents as collaborative team members. With over 90,000 stars on GitHub, this Shell-based repository demonstrates a practical methodology for integrating autonomous AI capabilities directly into coding processes. It represents a significant step toward more efficient, agent-driven engineering practices within the tech community.</div>
+                    <div class="repo-name"><a href="https://github.com/firecrawl/firecrawl" target="_blank">firecrawl/firecrawl</a></div>
+                    <div class="repo-meta">94429 stars &middot; TypeScript</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">🔥 The Web Data API for AI - Turn entire websites into LLM-ready markdown or structured data</div>
+                    <div class="repo-desc">Firecrawl is a popular open-source tool that automatically scrapes entire websites and converts them into LLM-ready formats like Markdown or structured data. Built with TypeScript and hosted on GitHub, it simplifies the process of preparing web content for large language models by handling complex site structures and dynamic elements. With nearly 95,000 stars, it serves as a key resource for developers looking to integrate high-quality web data into their AI applications.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/abhigyanpatwari/GitNexus" target="_blank">abhigyanpatwari/GitNexus</a></div>
-                    <div class="repo-meta">16255 stars &middot; TypeScript</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">GitNexus: The Zero-Server Code Intelligence Engine - GitNexus is a client-side knowledge graph creator that runs entirely in your browser. Drop in a GitHub repo or ZIP file, and get an interactive knowledge graph wit a built in Graph RAG Agent. Perfect for code exploration</div>
-                    <div class="repo-desc">GitNexus is a browser-based tool that automatically builds an interactive knowledge graph from any GitHub repository or ZIP file without requiring a server. By running entirely in your browser with built-in Graph RAG capabilities, it enables deep code exploration and analysis directly within the user's environment. The open-source project has gained significant traction on GitHub, demonstrating its utility for developers seeking efficient code intelligence solutions.</div>
+                    <div class="repo-name"><a href="https://github.com/rasbt/LLMs-from-scratch" target="_blank">rasbt/LLMs-from-scratch</a></div>
+                    <div class="repo-meta">88493 stars &middot; Jupyter Notebook</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">Implement a ChatGPT-like LLM in PyTorch from scratch, step by step</div>
+                    <div class="repo-desc">The rasbt/LLMs-from-scratch repository offers a comprehensive, step-by-step guide to building a ChatGPT-like large language model from the ground up using PyTorch. With nearly 90,000 stars, this highly popular Jupyter Notebook project demystifies complex AI concepts by providing practical code examples for each stage of model development. It serves as an accessible educational resource that enables developers to understand and implement foundational transformer architectures without relying on pre-existing black-box models.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/langchain-ai/deepagents" target="_blank">langchain-ai/deepagents</a></div>
-                    <div class="repo-meta">13596 stars &middot; Python</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">Agent harness built with LangChain and LangGraph. Equipped with a planning tool, a filesystem backend, and the ability to spawn subagents - well-equipped to handle complex agentic tasks.</div>
-                    <div class="repo-desc">DeepAgents is a powerful AI agent framework built on LangChain and LangGraph that enables complex autonomous tasks through advanced planning and subagent management. It features a filesystem backend and tools for orchestrating multiple specialized agents to solve intricate problems efficiently. With over 13,000 GitHub stars, this Python-based project has emerged as a top trending resource for developers working with agentic AI systems.</div>
+                    <div class="repo-name"><a href="https://github.com/microsoft/ML-For-Beginners" target="_blank">microsoft/ML-For-Beginners</a></div>
+                    <div class="repo-meta">84519 stars &middot; Jupyter Notebook</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">12 weeks, 26 lessons, 52 quizzes, classic Machine Learning for all</div>
+                    <div class="repo-desc">Microsoft's ML-For-Beginners is a highly popular, open-source curriculum available on GitHub that guides learners through the fundamentals of machine learning over a 12-week period. The repository features 26 lessons and 52 quizzes delivered via Jupyter Notebooks, providing hands-on coding practice without requiring advanced prerequisites. With nearly 85,000 stars, it serves as a comprehensive resource for anyone looking to build practical skills in this field from scratch.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/jarrodwatts/claude-hud" target="_blank">jarrodwatts/claude-hud</a></div>
-                    <div class="repo-meta">5207 stars &middot; JavaScript</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">A Claude Code plugin that shows what's happening - context usage, active tools, running agents, and todo progress</div>
-                    <div class="repo-desc">The `jarrodwatts/claude-hud` is a popular GitHub plugin that provides real-time visibility into Claude Code's operations, including context usage and active tools. By displaying agent status and task progress directly in the interface, it helps developers better understand and manage their AI workflows. With over 5,200 stars, this JavaScript-based tool has become a go-to solution for enhancing transparency within coding environments.</div>
+                    <div class="repo-name"><a href="https://github.com/browser-use/browser-use" target="_blank">browser-use/browser-use</a></div>
+                    <div class="repo-meta">81112 stars &middot; Python</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">🌐 Make websites accessible for AI agents. Automate tasks online with ease.</div>
+                    <div class="repo-desc">Browser-use is a Python library designed to make websites accessible and controllable by AI agents, enabling them to perform online tasks with greater ease. By bridging the gap between web interfaces and artificial intelligence, it simplifies the automation of complex digital workflows for developers. With over 81,000 stars on GitHub, it has emerged as a notable tool for integrating intelligent agents into standard browser environments.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/tensorflow/tensorflow" target="_blank">tensorflow/tensorflow</a></div>
-                    <div class="repo-meta">194201 stars &middot; C++</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">An Open Source Machine Learning Framework for Everyone</div>
-                    <div class="repo-desc">TensorFlow is a powerful, open-source machine learning framework that enables developers to build and train neural networks for complex tasks like image recognition and natural language processing. Widely adopted across industries, it supports multiple programming languages including Python and C++ and offers extensive tools for deploying models in production environments. As a foundational project in the field of artificial intelligence, TensorFlow has earned over 194,000 stars on GitHub, reflecting its significant impact on modern AI development.</div>
+                    <div class="repo-name"><a href="https://github.com/hacksider/Deep-Live-Cam" target="_blank">hacksider/Deep-Live-Cam</a></div>
+                    <div class="repo-meta">80113 stars &middot; Python</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">real time face swap and one-click video deepfake with only a single image</div>
+                    <div class="repo-desc">Hacksider's Deep-Live-Cam is an open-source tool that enables real-time face swapping and one-click video deepfakes using just a single reference image. Built with Python and hosted on GitHub, this project has garnered significant community attention with over 80,000 stars. It allows users to seamlessly replace faces in live video feeds or pre-recorded footage without requiring complex training datasets.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/Significant-Gravitas/AutoGPT" target="_blank">Significant-Gravitas/AutoGPT</a></div>
-                    <div class="repo-meta">182534 stars &middot; Python</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.</div>
-                    <div class="repo-desc">AutoGPT is an open-source artificial intelligence project hosted on GitHub that aims to make AI technology accessible for both users and developers. Written in Python, this popular repository has garnered significant attention with over 182,000 stars, reflecting its widespread adoption as a tool for building custom AI applications. The initiative focuses on providing the necessary infrastructure so that individuals can concentrate on their specific goals without getting bogged down by complex technical barriers.</div>
+                    <div class="repo-name"><a href="https://github.com/netdata/netdata" target="_blank">netdata/netdata</a></div>
+                    <div class="repo-meta">78100 stars &middot; C</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">The fastest path to AI-powered full stack observability, even for lean teams.</div>
+                    <div class="repo-desc">Netdata is an open-source observability platform built with C that enables lean teams to rapidly implement AI-driven monitoring for full-stack applications. With over 78,000 stars on GitHub, it provides a high-performance solution for tracking system metrics across distributed environments. This tool helps developers quickly identify and resolve performance bottlenecks without the overhead of complex enterprise configurations.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/ollama/ollama" target="_blank">ollama/ollama</a></div>
-                    <div class="repo-meta">165354 stars &middot; Go</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">Get up and running with Kimi-K2.5, GLM-5, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.</div>
-                    <div class="repo-desc">Ollama is a popular open-source tool that allows users to easily run various large language models directly on their own computers. It simplifies the process of accessing powerful AI models like Qwen and GLM-5 without needing complex cloud setups or high-end hardware. As a Go-based project with over 165,000 stars on GitHub, it is a go-to solution for developers and enthusiasts wanting to experiment with local AI technology.</div>
+                    <div class="repo-name"><a href="https://github.com/infiniflow/ragflow" target="_blank">infiniflow/ragflow</a></div>
+                    <div class="repo-meta">75283 stars &middot; Python</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">RAGFlow is a leading open-source Retrieval-Augmented Generation (RAG) engine that fuses cutting-edge RAG with Agent capabilities to create a superior context layer for LLMs</div>
+                    <div class="repo-desc">RAGFlow is a prominent open-source Retrieval-Augmented Generation engine built in Python that enhances large language models by combining advanced RAG techniques with agent capabilities. This tool provides a superior context layer, enabling AI systems to more effectively retrieve and utilize external information for accurate responses. With over 75,000 stars on GitHub, it stands as a leading solution for developers seeking robust, open-source alternatives to proprietary RAG frameworks.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/huggingface/transformers" target="_blank">huggingface/transformers</a></div>
-                    <div class="repo-meta">157977 stars &middot; Python</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training. </div>
-                    <div class="repo-desc">Hugging Face Transformers is an open-source Python framework that serves as the industry standard for building and deploying state-of-the-art machine learning models. It supports a wide range of applications including text, vision, audio, and multimodal tasks for both training new models and performing inference. Widely adopted by developers worldwide, this repository provides easy access to thousands of pre-trained models to accelerate research and production workflows.</div>
+                    <div class="repo-name"><a href="https://github.com/vllm-project/vllm" target="_blank">vllm-project/vllm</a></div>
+                    <div class="repo-meta">73443 stars &middot; Python</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">A high-throughput and memory-efficient inference and serving engine for LLMs</div>
+                    <div class="repo-desc">vLLM is a highly efficient engine designed to accelerate and optimize how large language models generate responses. It maximizes memory usage and throughput, making it ideal for deploying LLMs at scale without excessive hardware costs. As an open-source project written in Python, vLLM has gained significant traction with over 73,000 stars on GitHub.</div>
                 </div>
                 
             </div>
@@ -1015,17 +991,17 @@
         
         <div class="lead-section">
             <div class="lead-story">
-                <div class="story-source">Cointelegraph</div>
-                <div class="headline">PayPal Unleashes Golden Coin Across Seventy Nations With Tremendous Fervor</div>
-                <div class="story-body">PayPal is expanding access to its PYUSD stablecoin to users in 70 countries, significantly broadening beyond its initial launch in the US and UK. This move aims to simplify cross-border transactions by reducing fees while introducing new reward opportunities for holders. By integrating this digital dollar into a wider global network, PayPal seeks to enhance financial efficiency for international users.</div>
-                <a class="story-link" href="https://cointelegraph.com/news/paypal-expand-pyusd-stablecoin-70-countries?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank">Continue reading &rarr;</a>
+                <div class="story-source">Decrypt</div>
+                <div class="headline">CFTC Grants Phantom Wallet Exemption From Broker Registration Rules</div>
+                <div class="story-body">The U.S. Commodity Futures Trading Commission has ruled that Phantom, the developer of its popular self-custody wallet, does not need to register as a broker. This decision allows users to connect directly to regulated derivatives markets through the wallet without triggering new compliance requirements for the developer. The outcome clarifies the regulatory landscape for non-custodial applications interacting with traditional financial infrastructure.</div>
+                <a class="story-link" href="https://decrypt.co/361449/phantom-cftc-regulated-derivatives-markets" target="_blank">Continue reading &rarr;</a>
             </div>
             
             <div class="second-story" style="border-left: 1px solid var(--rule); padding-left: 30px;">
-                <div class="story-source">Cointelegraph</div>
-                <div class="headline">Decentralized Gold Shakes Empire and Halts World War One!</div>
-                <div class="story-body">Saifedean Ammous, author of *The Bitcoin Standard*, has published an alternate history scenario where a decentralized gold system successfully dismantles central banking and prevents World War I. This thought experiment explores how removing centralized monetary control could fundamentally alter geopolitical dynamics by eliminating the financial crises that historically fueled global conflicts. The piece highlights the potential role of independent monetary systems in fostering long-term stability without relying on traditional state-backed currencies.</div>
-                <a class="story-link" href="https://cointelegraph.com/news/bitcoin-standard-author-ammous-envisions-world-without-fiat?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank">Continue reading &rarr;</a>
+                <div class="story-source">CoinDesk</div>
+                <div class="headline">Bitcoin Rally Stalls Ahead of Crucial Fed Meeting</div>
+                <div class="story-body">Bitcoin's recent price surge is currently testing its resilience ahead of the Federal Reserve's scheduled meeting on Wednesday. Market analysts are closely watching this event, as the central bank's decisions on interest rates could significantly influence investor sentiment and crypto asset valuations. The outcome will likely determine whether Bitcoin can sustain its upward momentum or face a potential correction.</div>
+                <a class="story-link" href="https://www.coindesk.com/markets/2026/03/17/bitcoin-s-rally-faces-key-hurdle-with-wednesday-s-fed-meeting" target="_blank">Continue reading &rarr;</a>
             </div>
             
         </div>
@@ -1037,101 +1013,66 @@
         <div class="three-col">
             
             <div class="col-story ">
-                <div class="story-source">CoinDesk</div>
-                <div class="headline">Uniswap Crashes Amidst Panic, Dragging Entire Market Down in Ruinous Collapse</div>
-                <div class="story-body">The CoinDesk 20 index fell as Uniswap's UNI token dropped 4.1% in the latest trading session. This decline in one of the largest decentralized exchanges by volume contributed to a broader downturn across major cryptocurrencies. The movement reflects ongoing market volatility affecting key DeFi assets and the wider digital asset landscape.</div>
-                <a class="story-link" href="https://www.coindesk.com/coindesk-indices/2026/03/17/coindesk-20-performance-update-uniswap-uni-drops-4-1-leading-index-lower" target="_blank">Read more &rarr;</a>
+                <div class="story-source">The Block</div>
+                <div class="headline">CryptoQuant Warns Bitcoin May Face Hurdles at $75K-$85K Levels</div>
+                <div class="story-body">Data analytics firm CryptoQuant suggests that Bitcoin's recent upward momentum may encounter selling pressure between $75,000 and $85,000. If this price range holds as expected, it could act as a significant barrier before any further gains are realized. This analysis highlights key technical levels where traders might need to adjust their expectations for the asset's near-term performance.</div>
+                <a class="story-link" href="https://www.theblock.co/post/394015/cryptoquant-bitcoin-rally-resistance-between-75000-and-85000?utm_source=rss&utm_medium=rss" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
                 <div class="story-source">CoinDesk</div>
-                <div class="headline">Brazilian Fiefdom Seeks to Enslave Citizens with Crypto Fetters</div>
-                <div class="story-body">Ripple is aiming to strengthen its presence in Brazil by expanding its cryptocurrency and payment solutions, targeting the region's growing demand for faster cross-border transactions. This strategic move comes as the Brazilian market increasingly adopts digital assets for international settlements. The initiative underscores Ripple's broader global push to integrate blockchain technology into mainstream financial infrastructure.</div>
-                <a class="story-link" href="https://www.coindesk.com/business/2026/03/17/ripple-looks-to-expand-crypto-and-payment-services-in-brazil" target="_blank">Read more &rarr;</a>
+                <div class="headline">SEC Unveils Groundbreaking Rules Defining Crypto Securities Status</div>
+                <div class="story-body">The U.S. Securities and Exchange Commission has released its first-ever formal definitions distinguishing which cryptocurrency assets qualify as securities under federal law. This regulatory clarification aims to provide greater legal certainty for investors and issuers by explicitly outlining criteria such as the "how," "why," and "who" behind specific digital tokens. Consequently, projects that fall outside these new security classifications may operate with reduced compliance burdens, while those that meet the definitions will need to adhere to existing securities regulations.</div>
+                <a class="story-link" href="https://www.coindesk.com/policy/2026/03/17/u-s-sec-issues-first-ever-definitions-for-what-crypto-assets-are-securities" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
                 <div class="story-source">Cointelegraph</div>
-                <div class="headline">Cango Bankrupt! Bitcoin Fiends Devour Millions in Catastrophic Ruin</div>
-                <div class="story-body">Cango, a Canadian Bitcoin mining company, reported a significant Q4 loss of $285 million as operational costs surged throughout 2025. These financial challenges triggered a major stock decline, dropping shares by over 84% from October to February amid ongoing restructuring efforts. The sharp market reaction highlights the growing pressure on miners facing inflated energy and hardware expenses in the current economic climate.</div>
-                <a class="story-link" href="https://cointelegraph.com/news/cango-q4-loss-285m-mining-revenue-costs-2025?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank">Read more &rarr;</a>
+                <div class="headline">Bitcoin Rally Near $80K Could Signal Bull Market Return For ETF Buyers</div>
+                <div class="story-body">Bitcoin recently stabilized near the $70,000 mark, a level that brings many spot ETF investors close to breaking even on their holdings. Market analysts suggest that a further rally toward $80,000 could trigger significant profit-taking and signal the potential return of a bull market cycle. This development highlights the growing influence of institutional funds in shaping Bitcoin's price trajectory and investor sentiment.</div>
+                <a class="story-link" href="https://cointelegraph.com/news/bitcoin-holds-dollar70k-bringing-spot-etf-buyers-close-breakeven-is-bull-market-back?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">The Block</div>
+                <div class="headline">SEC, CFTC Issue Crypto Guidance Declaring Most Digital Assets Not Securities</div>
+                <div class="story-body">The SEC and CFTC have jointly released new guidance asserting that the majority of digital assets do not qualify as securities under federal law. This move aims to clarify regulatory boundaries for the crypto market by distinguishing between non-security tokens and those subject to existing securities regulations. The announcement seeks to reduce uncertainty for investors and businesses operating within the United States cryptocurrency ecosystem.</div>
+                <a class="story-link" href="https://www.theblock.co/post/394018/sec-cftc-crypto-guidance-declaring-most-digital-assets-are-not-securities?utm_source=rss&utm_medium=rss" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
                 <div class="story-source">Decrypt</div>
-                <div class="headline">Gold-Powered Coin Yields Surge as Millionaire Vault Swells!</div>
-                <div class="story-body">Following a $100 million funding round, tokenization platform Theo is launching a new gold-backed stablecoin designed to generate yield from two distinct sources. This initiative aims to provide users with a digital asset that combines the stability of gold reserves with income-generating capabilities. The project represents a significant step toward integrating precious metals into decentralized finance mechanisms for broader investor access.</div>
-                <a class="story-link" href="https://decrypt.co/361292/theo-gold-futures-yield-bearing-stablecoin-100-million-raise" target="_blank">Read more &rarr;</a>
+                <div class="headline">SEC Sets Clear Rules for Most Crypto, Including Staking and Mining.</div>
+                <div class="story-body">The U.S. Securities and Exchange Commission has updated its guidance to classify the majority of cryptocurrencies as non-securities, explicitly covering activities such as staking, airdrops, and Bitcoin mining. SEC Chair Paul Atkins stated that this new framework establishes clear definitions to provide regulatory certainty for the industry. This shift aims to remove ambiguity surrounding digital assets by defining them in straightforward terms for both issuers and investors.</div>
+                <a class="story-link" href="https://decrypt.co/361446/sec-most-crypto-assets-not-securities-staking-airdrops-bitcoin-mining" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
-                <div class="story-source">CoinDesk</div>
-                <div class="headline">Citigroup Crumples! Crypto Targets Dropped Amid Legislative Gridlock Doom</div>
-                <div class="story-body">Major bank Citigroup has lowered its price targets for Bitcoin and Ethereum following delays in passing U.S. cryptocurrency legislation. The Wall Street giant expressed concern that stalled regulatory progress creates uncertainty, potentially hindering institutional adoption of digital assets. This move highlights how pending laws significantly influence the investment outlooks of traditional financial institutions regarding crypto markets.</div>
-                <a class="story-link" href="https://www.coindesk.com/markets/2026/03/17/citigroup-cuts-btc-and-eth-targets-as-u-s-crypto-legislation-stalls" target="_blank">Read more &rarr;</a>
+                <div class="story-source">Bitcoin Magazine</div>
+                <div class="headline">Bitcoin Hovers at $75K Amid Doubts Over Decoupling Theory</div>
+                <div class="story-body">Bitcoin traded near the $75,000 mark on Tuesday, continuing its recent upward momentum as it approached a significant psychological price level. Market observers are closely watching these movements while questioning the prevailing narrative that the cryptocurrency sector is becoming disconnected from broader economic trends. The asset's resilience suggests sustained investor interest despite ongoing debates about market dynamics.</div>
+                <a class="story-link" href="https://bitcoinmagazine.com/markets/bitcoin-price-dances-near-75000" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">The Block</div>
+                <div class="headline">Morgan Stanley Exec: Crypto ETF Adoption Remains Early For Advisors</div>
+                <div class="story-body">Morgan Stanley's Amy Oldenburg notes that while crypto ETF interest is growing, adoption remains in its early stages as advisors carefully determine client allocations. Currently, the majority of demand for these investment vehicles at major brokerages originates from self-directed investors rather than those relying on professional guidance. This dynamic suggests that financial institutions are still navigating how to integrate digital assets into broader portfolios amidst varying investor preferences.</div>
+                <a class="story-link" href="https://www.theblock.co/post/394004/morgan-stanley-exec-crypto-etf-adoption-very-early-advisors-weigh-allocations?utm_source=rss&utm_medium=rss" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">Decrypt</div>
+                <div class="headline">Warren Urges Answers After Pentagon Grants Musk's Grok Classified Access</div>
+                <div class="story-body">Senator Elizabeth Warren has requested an explanation regarding the Pentagon's decision to grant Elon Musk's xAI classified government access, despite previous warnings from the NSA about potential security risks. Critics point to a history of harmful AI outputs generated by Musk's systems as a cause for concern, highlighting the tension between rapid technological advancement and national security protocols. Meanwhile, the Department of Defense maintains that its approval was justified, standing in contrast to the heightened anxieties voiced by lawmakers and cybersecurity experts.</div>
+                <a class="story-link" href="https://decrypt.co/361441/elon-musk-grok-leaks-classified-info-elizabeth-warren-worried" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
                 <div class="story-source">Cointelegraph</div>
-                <div class="headline">Stablecoin Titans Shatter FX Chains, Yet Bank Gates Remain Grim Barriers</div>
-                <div class="story-body">Stablecoins are increasingly serving as a cost-effective alternative to traditional foreign exchange systems for cross-border transactions. However, Delphi Digital notes that the ability to easily convert these digital assets into fiat currency at banks remains a major bottleneck. Consequently, while the technology offers lower fees, off-ramp limitations continue to hinder widespread adoption and efficiency.</div>
-                <a class="story-link" href="https://cointelegraph.com/news/stablecoins-replace-fx-rails-chokepoint?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">The Block</div>
-                <div class="headline">Mastercard Devours BVNK in Gigantic Billion-Dollar Financial Gorging!</div>
-                <div class="story-body">Mastercard is acquiring stablecoin infrastructure company BVNK in a deal worth up to $1.8 billion to integrate blockchain capabilities into its global payment network. This strategic move will enable seamless connections between traditional fiat currency systems and on-chain digital assets, expanding Mastercard's reach into the growing cryptocurrency market. The acquisition positions the financial giant to offer merchants and consumers new ways to process payments using stablecoins while maintaining regulatory compliance.</div>
-                <a class="story-link" href="https://www.theblock.co/post/393898/mastercard-to-acquire-stablecoin-infrastructure-firm-bvnk-for-up-to-1-8-billion?utm_source=rss&utm_medium=rss" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Cointelegraph</div>
-                <div class="headline">Institutions Embrace Bitcoin While Prices Plummet in Strange Enigma!</div>
-                <div class="story-body">While institutional and corporate interest in Bitcoin continues to grow rapidly, its market price has not yet reflected this surge in adoption. This article explores the reasons behind the disconnect between these strong fundamental metrics and current trading performance. Ultimately, it seeks to explain why investor sentiment and valuation remain lagging despite increased real-world utility.</div>
-                <a class="story-link" href="https://cointelegraph.com/news/bitcoin-adoption-vs-price?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">CoinDesk</div>
-                <div class="headline">Sovereign South America Bars All Access to Foul Polymarket Exchange</div>
-                <div class="story-body">Argentina has joined other nations in restricting access to Polymarket, a decentralized prediction market platform built on blockchain technology. This move continues a global trend where regulators are increasingly scrutinizing and limiting crypto-based betting sites due to concerns over financial stability and consumer protection. The block effectively prevents Argentine users from accessing the platform's services for forecasting real-world events.</div>
-                <a class="story-link" href="https://www.coindesk.com/policy/2026/03/17/argentina-joins-growing-list-of-countries-blocking-polymarket-access" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Decrypt</div>
-                <div class="headline">Altcoin Mania Roars as Bitcoin Soars Past Seventy-Five Thousand!</div>
-                <div class="story-body">Following Bitcoin's successful retest of the $75,000 level, altcoins focused on artificial intelligence and privacy have led a broader market rally. Industry experts attribute this surge to genuine demand for underlying infrastructure rather than speculative interest in meme coins. Consequently, these utility-driven sectors are attracting significant attention as investors look beyond short-term hype.</div>
-                <a class="story-link" href="https://decrypt.co/361366/ai-privacy-coins-lead-altcoin-rally-as-bitcoin-tops-75k" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">CoinDesk</div>
-                <div class="headline">Mastercard Swallows BVNK Stablecoin Empire for Eighteen Hundred Million!</div>
-                <div class="story-body">Mastercard has agreed to acquire BVNK, a leading stablecoin network provider, in a deal valued at up to $1.8 billion. This strategic move aims to accelerate Mastercard's integration of digital assets into its existing payment infrastructure and expand its reach in the rapidly growing crypto ecosystem. The acquisition underscores the traditional financial sector's increasing commitment to embracing blockchain technology for faster, more efficient transactions.</div>
-                <a class="story-link" href="https://www.coindesk.com/business/2026/03/17/mastercard-agrees-to-purchase-bvnk-for-up-to-usd1-8-billion" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">The Block</div>
-                <div class="headline">Vietnam Bans Crypto Wilds As Bank Brokers Duel For Licenses!</div>
-                <div class="story-body">Vietnam is moving to prohibit its citizens from trading cryptocurrencies on foreign exchanges while simultaneously opening a competitive market for local banks and brokers seeking domestic licensing. This regulatory shift aims to curb illegal overseas crypto activities by channeling investor interest toward approved local platforms. The move reflects the government's effort to balance financial security with controlled innovation in the nation's digital asset sector.</div>
-                <a class="story-link" href="https://www.theblock.co/post/393888/vietnam-prepares-to-restrict-overseas-crypto-trading-as-banks-brokers-bid-for-new-local-licenses-report?utm_source=rss&utm_medium=rss" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Decrypt</div>
-                <div class="headline">Myriad Merchants Bet Big on Ether's Resurrection at $2,300!</div>
-                <div class="story-body">Ethereum has rebounded to $2,300, driven by new capital inflows and purchases from institutional treasuries. This price recovery has prompted traders on the prediction platform Myriad to shift their outlook to bullish. As the asset gains momentum, market sentiment aligns with renewed buying interest supporting its upward trajectory.</div>
-                <a class="story-link" href="https://decrypt.co/361357/myriad-traders-flip-bullish-on-ethereum-amid-rebound-to-2300" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">The Block</div>
-                <div class="headline">Sovereign Decree Slams Polymarket From Argentine Shores Amidst Global Scandal!</div>
-                <div class="story-body">Argentina has mandated a nationwide ban on Polymarket, a popular prediction market platform that allows users to bet on real-world events using cryptocurrency. This regulatory action reflects increasing global concerns over the potential risks associated with decentralized betting platforms. The move adds Argentina to a growing list of jurisdictions scrutinizing the legal status and operational scope of such services.</div>
-                <a class="story-link" href="https://www.theblock.co/post/393877/argentina-orders-nationwide-block-of-polymarket-as-scrutiny-of-prediction-markets-grows-report?utm_source=rss&utm_medium=rss" target="_blank">Read more &rarr;</a>
+                <div class="headline">Tether Unveils AI Framework Supporting Non-Nvidia Hardware on Smartphones</div>
+                <div class="story-body">Tether has unveiled a new AI training framework as part of its QVAC platform, enabling developers to train models on non-Nvidia hardware like consumer-grade GPUs and smartphones. This initiative broadens access to advanced artificial intelligence by moving beyond the industry's reliance on specialized enterprise chips. By leveraging existing devices, the framework aims to democratize AI development for a wider range of users without requiring expensive infrastructure.</div>
+                <a class="story-link" href="https://cointelegraph.com/news/tether-launches-ai-training-framework-for-smartphones-and-consumer-gpus?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank">Read more &rarr;</a>
             </div>
             
         </div>
@@ -1145,66 +1086,73 @@
             <div class="three-col">
                 
                 <div class="col-story ">
-                    <div class="story-source">X (@Cointelegraph)</div>
-                    <div class="headline">Transatlantic Powers Unite in Grand War Against Crypto Thieves</div>
-                    <div class="story-body">The United States, United Kingdom, and Canada have launched a coordinated initiative called "Operation Atlantic" to tackle cross-border cryptocurrency fraud. This joint effort aims to strengthen international cooperation among regulators and law enforcement agencies to dismantle illicit crypto schemes. By sharing intelligence and resources, the three nations seek to better protect consumers and stabilize their respective financial systems against evolving digital threats.</div>
-                    <a class="story-link" href="https://x.com/Cointelegraph/status/2033819437594206632" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@SoSoValueCrypto)</div>
+                    <div class="headline">@SoSoValueCrypto</div>
+                    <div class="story-body">Public companies bought $1.28B worth of  BTC  last week, up 513% WoW.
+
+Strategy    led the way, investing $1.28B to acquire 17,994  BTC  at an average  price  of $70,946, bringing total holdings to 738,731  BTC . Its weekly purchase amount jumped 527% from the prior week.</div>
+                    <a class="story-link" href="https://x.com/SoSoValueCrypto/status/2030990201284444160" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@_Investinq)</div>
-                    <div class="headline">Mandatory Disclosure: All Public Firms Forced Quarterly To Reveal Their Treasures</div>
-                    <div class="story-body">Every public company listed on the stock market, including major firms like Apple and Tesla, is legally mandated to disclose its financial records quarterly. This requirement ensures that investors receive transparent updates on revenue, expenses, and overall profitability every three months. Such regular reporting fosters market trust by keeping shareholders informed about a company's economic performance.</div>
-                    <a class="story-link" href="https://x.com/_Investinq/status/2033671646691619034" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@pete_rizzo_)</div>
+                    <div class="headline">@pete_rizzo_</div>
+                    <div class="story-body">SEC  CHAIR URGES CONGRESS TO PASS   AND  CRYPTO  MARKET STRUCTURE  LAW 
+
+IT’S “BEEN TOO LONG”  
+
+"THIS IS WHAT'S BEST FOR MARKETS"
+
+IT'S COMING </div>
+                    <a class="story-link" href="https://x.com/pete_rizzo_/status/2033395330931118562" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@BitcoinJunkies)</div>
-                    <div class="headline">Bitcoin Crashes Harder Than Pandemic's Grimest Hour!</div>
-                    <div class="story-body">Analysts on X suggest that Bitcoin's current market conditions are more "oversold" than they were during the 2020 COVID crash. This comparison highlights a potential buying opportunity as the asset price drops significantly below historical norms. The post from @BitcoinJunkies serves as a cautionary note for investors to monitor these technical indicators closely.</div>
-                    <a class="story-link" href="https://x.com/BitcoinJunkies/status/2033782413915009075" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@GordonGekko)</div>
+                    <div class="headline">@GordonGekko</div>
+                    <div class="story-body">Someone just opened a $42M  bitcoin  Long  
+
+40X leverage 
+
+Liquidation  price : $66,192.</div>
+                    <a class="story-link" href="https://x.com/GordonGekko/status/2028115969378263492" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@Greencandleit)</div>
-                    <div class="headline">Sec Chair Beseeches Congress for Crypto Law Before Markets Perish!</div>
-                    <div class="story-body">SEC Chair Gary Gensler has urged Congress to expedite legislation establishing a clear regulatory framework for Bitcoin and the broader cryptocurrency market. He argues that resolving this long-standing uncertainty is essential for fostering stability and growth within the digital asset industry. This push comes as lawmakers seek to define rules that balance innovation with investor protection.</div>
-                    <a class="story-link" href="https://x.com/Greencandleit/status/2033664609949794633" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@TheBitcoinConf)</div>
+                    <div class="headline">@TheBitcoinConf</div>
+                    <div class="story-body">WE'RE EXCITED TO  ANNOUNCE  BRIAN DE MINT AS A  BITCOIN  2026 SPEAKER  
+
+" Bitcoin  only needs 21 million whole coiners and then the USD value becomes unlimited" </div>
+                    <a class="story-link" href="https://x.com/TheBitcoinConf/status/2032461729188221306" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@BitcoinJunkies)</div>
-                    <div class="headline">Michael Burry Prophesies Catastrophic Economic Ruin For All!</div>
-                    <div class="story-body">Michael Burry, the investor known for his role in "The Big Short," has issued a stark warning that the US financial markets and broader economy face an imminent crash. Describing the situation as "too big to save," he suggests that current systemic issues are beyond immediate resolution. While this commentary appears on social media platforms discussing cryptocurrency, it primarily focuses on traditional macroeconomic risks rather than specific blockchain developments.</div>
-                    <a class="story-link" href="https://x.com/BitcoinJunkies/status/2031936217051250718" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@exitpumpBTC)</div>
+                    <div class="headline">@exitpumpBTC</div>
+                    <div class="story-body"> This is how weak  price  action looks to me, usually ends up in a dump.</div>
+                    <a class="story-link" href="https://x.com/exitpumpBTC/status/2032852818810339395" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@VentureCoinist)</div>
-                    <div class="headline">BlackRock Prophet Declares Ethereum Staking ETF Silver Bullet For Wealthy Elite!</div>
-                    <div class="story-body">BlackRock's newly launched Ethereum staking ETF has surged 17% in just one week, outperforming Bitcoin and becoming the third fastest ETF ever to hit $10 billion in assets under management. Industry experts are calling this product a "silver bullet" that offers institutional investors a streamlined way to gain exposure to Ethereum's proof-of-stake network. With its initial launch already attracting massive capital inflows, the fund is poised to play a major role in mainstream adoption of digital assets.</div>
-                    <a class="story-link" href="https://x.com/VentureCoinist/status/2033508131880186114" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@exitpumpBTC)</div>
+                    <div class="headline">@exitpumpBTC</div>
+                    <div class="story-body"> Lose 70K with weak  price  action and we see another rotation back to 66K. This is where you enter short or just wait as bull. Yellow trend line is 90D Rolling VWAP, usually  price  retests it before continuing the trend.</div>
+                    <a class="story-link" href="https://x.com/exitpumpBTC/status/2032850331290435856" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@QuintenFrancois)</div>
-                    <div class="headline">Self-Made Crypti Titan Shatters All Bonds With No VCs!</div>
-                    <div class="story-body">The user highlights an emerging cryptocurrency project as a potential market leader in Web3 artificial intelligence, noting its unique structure which excludes venture capital funding, premines, and team-held supply. By citing "Reed's Law," the post suggests that the project's network effects could scale significantly due to these decentralized tokenomics similar to Bitcoin's halving mechanism. Overall, the description emphasizes the coin's position as an AI-focused asset with a transparent distribution model designed for long-term growth.</div>
-                    <a class="story-link" href="https://x.com/QuintenFrancois/status/2033608485464904033" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@poptyedev)</div>
+                    <div class="headline">@poptyedev</div>
+                    <div class="story-body">so   is about to  launch  on Eth , base , monad and bsc ?</div>
+                    <a class="story-link" href="https://x.com/poptyedev/status/2031724305646575809" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@Crypto0637)</div>
-                    <div class="headline">Musk's X Money Debit Card Triumphs In Historic Financial Feat</div>
-                    <div class="story-body">Elon Musk's X has successfully processed its first-ever debit card transaction for X Money, signaling that the service is expected to launch within weeks. This milestone represents a significant step toward integrating cryptocurrency payments directly into the popular social media platform. If successful, the move could greatly accelerate mainstream adoption of digital assets by making them more accessible to everyday users.</div>
-                    <a class="story-link" href="https://x.com/Crypto0637/status/2032592512787894538" target="_blank">View dispatch &rarr;</a>
-                </div>
-                
-                <div class="col-story col-divider">
-                    <div class="story-source">X (@coinbureau)</div>
-                    <div class="headline">Doom Looms Over Clarity Act As Parliamentary Hope Fades</div>
-                    <div class="story-body">Galaxy Digital research suggests the CLARITY Act might fail to become law this year if it does not clear committee hurdles by the end of April. The primary obstacle is a dispute over stablecoin rewards, which banks fear could incentivize deposit withdrawals and destabilize the financial system. This potential legislative delay highlights ongoing tensions between crypto innovation advocates and traditional banking regulators regarding stablecoin mechanisms.</div>
-                    <a class="story-link" href="https://x.com/coinbureau/status/2033058055861289115" target="_blank">View dispatch &rarr;</a>
+                    <div class="story-source">X (@CryptoHulk19)</div>
+                    <div class="headline">@CryptoHulk19</div>
+                    <div class="story-body">EU To  Launch  Accelerated Institutional Only  Crypto  Platform. Canton Coin!                              </div>
+                    <a class="story-link" href="https://x.com/CryptoHulk19/status/2031933169575084346" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
             </div>
@@ -1219,59 +1167,59 @@
             <div class="github-grid">
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/bitcoin/bitcoin" target="_blank">bitcoin/bitcoin</a></div>
-                    <div class="repo-meta">88516 stars &middot; C++</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">Bitcoin Core integration/staging tree</div>
-                    <div class="repo-desc">The Bitcoin Core repository serves as the primary development hub for building and maintaining Bitcoin nodes, where developers integrate new features and security patches before they reach the main software release. Hosted on GitHub with nearly 90,000 stars, this open-source project relies on C++ code to keep the world's leading cryptocurrency network secure and up-to-date. It acts as the central staging ground for all changes that will eventually power Bitcoin transactions across the global blockchain.</div>
+                    <div class="repo-name"><a href="https://github.com/hyperledger/fabric" target="_blank">hyperledger/fabric</a></div>
+                    <div class="repo-meta">16602 stars &middot; Go</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">Hyperledger Fabric is an enterprise-grade permissioned distributed ledger framework for developing solutions and applications. Its modular and versatile design satisfies a broad range of industry use cases. It offers a unique approach to consensus that enables performance at scale while preserving privacy.</div>
+                    <div class="repo-desc">Hyperledger Fabric is an open-source enterprise framework built on Go that enables developers to create secure, permissioned distributed ledger applications. Its modular architecture and unique consensus mechanism are specifically designed to deliver high performance and strict privacy controls for large-scale industrial use cases. As a notable project on GitHub with over 16,000 stars, it serves as a foundational tool for building trusted blockchain solutions across various industries.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/FuelLabs/sway" target="_blank">FuelLabs/sway</a></div>
-                    <div class="repo-meta">61876 stars &middot; Rust</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">🌴 Empowering everyone to build reliable and efficient smart contracts.</div>
-                    <div class="repo-desc">FuelLabs' Sway is a secure, high-performance smart contract language built in Rust designed to help developers create reliable applications on the Fuel network. With over 61,000 stars on GitHub, it aims to lower the barrier to entry for building efficient decentralized software while prioritizing safety and speed. This tool empowers a broader range of creators to contribute to the ecosystem without needing deep expertise in complex blockchain-specific syntax.</div>
+                    <div class="repo-name"><a href="https://github.com/UFund-Me/Qbot" target="_blank">UFund-Me/Qbot</a></div>
+                    <div class="repo-meta">16577 stars &middot; Jupyter Notebook</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">[🔥updating ...] AI 自动量化交易机器人(完全本地部署) AI-powered Quantitative Investment Research Platform. 📃 online docs: https://ufund-me.github.io/Qbot   ✨ :news: qbot-mini: https://github.com/Charmve/iQuant</div>
+                    <div class="repo-desc">Qbot is an AI-powered quantitative trading platform designed to run entirely on local hardware for enhanced data privacy and security. With over 16,000 stars on GitHub, it leverages machine learning models to automate investment research and execution without relying on external cloud services. The project provides open-source documentation and tools like Qbot-mini, making advanced algorithmic trading accessible to developers through a Jupyter Notebook-based environment.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/FuelLabs/fuel-core" target="_blank">FuelLabs/fuel-core</a></div>
-                    <div class="repo-meta">57290 stars &middot; Rust</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">Rust full node implementation of the Fuel v2 protocol.</div>
-                    <div class="repo-desc">FuelLabs' fuel-core is a high-performance full node written in Rust that implements the Fuel v2 blockchain protocol. As a notable project on GitHub with over 57,000 stars, it provides the essential infrastructure for validating transactions and maintaining the decentralized network. This implementation aims to offer scalability and efficiency improvements for the Fuel ecosystem through its native language choice.</div>
+                    <div class="repo-name"><a href="https://github.com/ethereum/EIPs" target="_blank">ethereum/EIPs</a></div>
+                    <div class="repo-meta">13809 stars &middot; Go</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">The Ethereum Improvement Proposal repository</div>
+                    <div class="repo-desc">The Ethereum Improvement Proposals (EIPs) repository serves as the official community hub for suggesting and discussing technical enhancements to the Ethereum network. Written in Go, this GitHub project gathers proposals ranging from protocol upgrades to smart contract standards, enabling transparent development of the ecosystem's future. With nearly 14,000 stars, it remains a critical resource for developers tracking the evolution of blockchain technology on Ethereum.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/DefinitelyTyped/DefinitelyTyped" target="_blank">DefinitelyTyped/DefinitelyTyped</a></div>
-                    <div class="repo-meta">51076 stars &middot; TypeScript</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">The repository for high quality TypeScript type definitions.</div>
-                    <div class="repo-desc">The DefinitelyTyped repository hosts high-quality TypeScript type definitions that significantly expand the language's utility beyond its built-in capabilities. With over 51,000 stars on GitHub, it serves as a critical resource for developers seeking to add type safety to JavaScript projects without rewriting their entire codebase. This collection of community-maintained definitions effectively bridges the gap between dynamic JavaScript and statically typed development workflows.</div>
+                    <div class="repo-name"><a href="https://github.com/MetaMask/metamask-extension" target="_blank">MetaMask/metamask-extension</a></div>
+                    <div class="repo-meta">13100 stars &middot; TypeScript</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">:globe_with_meridians: :electric_plug: The MetaMask browser extension enables browsing Ethereum blockchain enabled websites</div>
+                    <div class="repo-desc">MetaMask is a popular open-source browser extension that allows users to interact with and manage assets on the Ethereum blockchain directly from their web browsers. Written in TypeScript, this well-maintained project currently holds over 13,000 stars on GitHub, serving as a key tool for accessing decentralized applications. It functions as a bridge between standard internet browsing and the Web3 ecosystem, enabling seamless connection to crypto-enabled websites.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/ethereum/go-ethereum" target="_blank">ethereum/go-ethereum</a></div>
-                    <div class="repo-meta">50922 stars &middot; Go</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">Go implementation of the Ethereum protocol</div>
-                    <div class="repo-desc">go-ethereum is the official open-source implementation of the Ethereum network written in the Go programming language, serving as the foundational software that enables nodes to run and validate transactions on the blockchain. As a highly popular project on GitHub with over 50,000 stars, it provides the core infrastructure required for developers to build decentralized applications and participate in the Ethereum ecosystem.</div>
+                    <div class="repo-name"><a href="https://github.com/NoFxAiOS/nofx" target="_blank">NoFxAiOS/nofx</a></div>
+                    <div class="repo-meta">10950 stars &middot; Go</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">Your personal AI trading assistant. Any market. Any model. Pay with USDC, not API keys.</div>
+                    <div class="repo-desc">NoFxAiOS is an open-source trading platform built in Go that allows users to trade any market using any model without requiring traditional API keys. Instead of exposing sensitive credentials, the system enables payments in USDC, enhancing security for personal AI trading assistants. With over 10,000 stars on GitHub, it represents a significant shift toward keyless, user-owned infrastructure in decentralized finance.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/freqtrade/freqtrade" target="_blank">freqtrade/freqtrade</a></div>
-                    <div class="repo-meta">47739 stars &middot; Python</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">Free, open source crypto trading bot</div>
-                    <div class="repo-desc">Freqtrade is a popular, free, and open-source cryptocurrency trading bot built with Python that allows users to automate their crypto investment strategies directly from their own hardware. With nearly 48,000 stars on GitHub, it serves as a trusted tool for both beginners and experienced traders seeking transparent, customizable algorithmic solutions without relying on third-party platforms.</div>
+                    <div class="repo-name"><a href="https://github.com/Chia-Network/chia-blockchain" target="_blank">Chia-Network/chia-blockchain</a></div>
+                    <div class="repo-meta">10846 stars &middot; Python</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">Chia blockchain python implementation (full node, farmer, harvester, timelord, and wallet)</div>
+                    <div class="repo-desc">Chia Blockchain is an open-source cryptocurrency project built on Python that offers complete software tools for network participation, including full nodes, farmers, harvesters, timelords, and wallets. Hosted on GitHub with over 10,000 stars, this repository provides the essential codebase for users to run their own Chia network infrastructure locally. The implementation enables developers and enthusiasts to engage directly with the project's proof-of-space-and-time consensus mechanism through accessible Python-based utilities.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/ccxt/ccxt" target="_blank">ccxt/ccxt</a></div>
-                    <div class="repo-meta">41371 stars &middot; Python</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">A cryptocurrency trading API with more than 100 exchanges in JavaScript / TypeScript / Python / C# / PHP / Go </div>
-                    <div class="repo-desc">ccxt is a popular open-source library that provides developers with a unified API to connect to over 100 cryptocurrency exchanges. Supporting multiple programming languages including Python, JavaScript, and Go, it simplifies the process of building trading applications by standardizing how different platforms communicate. With over 41,000 stars on GitHub, it serves as a foundational tool for creating cross-exchange crypto solutions.</div>
+                    <div class="repo-name"><a href="https://github.com/OffcierCia/DeFi-Developer-Road-Map" target="_blank">OffcierCia/DeFi-Developer-Road-Map</a></div>
+                    <div class="repo-meta">10711 stars &middot; JavaScript</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">DeFi Developer roadmap is a curated Developer handbook which includes a list of the best tools for DApps development, resources and references! </div>
+                    <div class="repo-desc">GitHub's OffcierCia/DeFi-Developer-Road-Map offers a curated handbook designed to guide developers in building decentralized applications (DApps). This popular JavaScript repository aggregates essential tools, resources, and references to streamline entry into the DeFi ecosystem. With over 10,000 stars, it serves as a comprehensive starting point for those looking to navigate the complexities of blockchain development.</div>
                 </div>
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/anoma/anoma" target="_blank">anoma/anoma</a></div>
-                    <div class="repo-meta">34000 stars &middot; Elixir</div>
-                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">Reference implementation of Anoma</div>
-                    <div class="repo-desc">Anoma is a decentralized protocol built to enable secure, peer-to-peer communication and data exchange without relying on traditional internet infrastructure or centralized servers. Written in Elixir, this reference implementation aims to create a resilient network where users maintain full control over their digital identity and information. With over 34,000 stars on GitHub, the project represents a significant community effort to advance privacy-preserving technology through open-source collaboration.</div>
+                    <div class="repo-name"><a href="https://github.com/bitcoin/bips" target="_blank">bitcoin/bips</a></div>
+                    <div class="repo-meta">10659 stars &middot; Wikitext</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--repo-summary);">Bitcoin Improvement Proposals</div>
+                    <div class="repo-desc">The Bitcoin Improvement Proposal (BIP) repository serves as the official open-source forum where developers draft, discuss, and standardize technical upgrades for the Bitcoin network. Each proposal outlines specific changes to the protocol's code or governance rules, ranging from fee structure adjustments to new transaction types like SegWit. By facilitating transparent community review, this platform ensures that all improvements are rigorously vetted before being implemented into the blockchain.</div>
                 </div>
                 
             </div>
@@ -1280,7 +1228,6 @@
 
         
         
-
 
         <!-- Pagination -->
         <nav class="pagination" id="pagination">

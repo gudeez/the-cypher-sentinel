@@ -59,9 +59,9 @@ def build_edition(send_telegram=True):
         domain_name = domain_cfg["name"]
         context = domain_cfg["prompt_context"]
 
-        print(f"\n{'─'*60}")
+        print(f"\n{'-'*60}")
         print(f"  Domain: {domain_name}")
-        print(f"{'─'*60}")
+        print(f"{'-'*60}")
 
         # --- Fetch RSS ---
         print(f"  [RSS] Fetching feeds...")
@@ -90,7 +90,7 @@ def build_edition(send_telegram=True):
         print(f"  [GH] Found {len(gh_deduped)} repos")
 
         # --- Cap per domain for variety ---
-        MAX_PER_SOURCE = 5
+        MAX_PER_SOURCE = 4
         source_counts = {}
         balanced_news = []
         for s in rss_stories:
@@ -120,7 +120,15 @@ def build_edition(send_telegram=True):
         news_processed = [_process_story(s, context) for s in news_to_process]
 
         print(f"\n  --- {domain_name}: X Dispatches ---")
-        x_processed = [_process_story(s, context) for s in x_to_process]
+        # Use tweets verbatim — no LLM rewriting
+        x_processed = []
+        for s in x_to_process:
+            x_processed.append({
+                **s,
+                "headline": f"@{s.get('author', 'unknown')}",
+                "body": s.get("summary", s.get("title", "")),
+            })
+        print(f"  Kept {len(x_processed)} tweets verbatim")
 
         print(f"\n  --- {domain_name}: GitHub ---")
         gh_processed = [_process_story(s, context) for s in gh_to_process]

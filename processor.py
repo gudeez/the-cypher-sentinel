@@ -52,23 +52,18 @@ Write ONLY the description, no preamble:"""
 
 
 def generate_headline(story):
-    """Generate a dramatic 1880s-style headline."""
-    prompt = f"""You MUST rewrite this headline completely in the dramatic style of an 1880s newspaper. Do NOT repeat the original headline. Make it sensational, Victorian, and punchy. Use title case. Keep it under 15 words.
+    """Generate a clear, punchy headline."""
+    prompt = f"""Rewrite this headline to be clear, concise, and engaging. Use title case. Keep it under 15 words. Do NOT repeat the original word-for-word.
 
 Original: {story['title']}
 Context: {story.get('summary', '')[:200]}
 
-Example rewrites:
-- "Major data breach at hospital" -> "Nefarious Scoundrels Plunder Hospital Ledgers in Audacious Digital Burglary"
-- "New encryption standard released" -> "Impenetrable Cypher Engine Unveiled to Thunderous Acclaim"
-- "Ransomware gang arrested" -> "Scotland Yard of the Ether Nets Notorious Band of Digital Highwaymen"
-
-Your dramatic Victorian rewrite:"""
+Your rewrite:"""
 
     result = _generate(prompt, max_tokens=50)
     result = result.strip('"\'').strip()
     if not result or result.lower() == story["title"].lower():
-        return f"Most Alarming: {story['title']}"
+        return story["title"]
     return result
 
 
@@ -79,7 +74,7 @@ def editorialize(stories, domain_context="cybersecurity, artificial intelligence
         briefs.append(f"{i}. {s['title']}: {s.get('summary', '')[:150]}")
     stories_text = "\n".join(briefs)
 
-    prompt = f"""You are the editor-in-chief of "The Cypher Sentinel," an 1880s newspaper covering {domain_context}. Write a short Editor's Column (3-4 sentences) identifying the overarching themes in today's stories. Write in a Victorian editorial voice — authoritative, slightly pompous, but genuinely concerned about the state of the digital dominion.
+    prompt = f"""You are the editor of "The Cypher Sentinel," a newsletter covering {domain_context}. Write a short Editor's Column (3-4 sentences) identifying the key themes in today's stories. Be direct, informative, and conversational. No flowery language.
 
 Today's stories:
 {stories_text}
