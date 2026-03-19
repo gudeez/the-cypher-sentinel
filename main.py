@@ -29,7 +29,8 @@ class NewspaperHandler(http.server.SimpleHTTPRequestHandler):
 
 
 def git_push_edition():
-    """Stage editions/, commit with today's date, and push to origin."""
+    """Stage editions/, commit with today's date, and push to origin.
+    Returns True on success, False on failure."""
     today = datetime.now(CST).strftime("%Y-%m-%d")
     try:
         run = functools.partial(subprocess.run, cwd=PROJECT_ROOT, check=True,
@@ -40,12 +41,14 @@ def git_push_edition():
                                 cwd=PROJECT_ROOT)
         if result.returncode == 0:
             print("  No edition changes to push.")
-            return
+            return True
         run(["git", "commit", "-m", f"Add edition {today}"])
         run(["git", "push", "origin", "master"])
         print(f"  Pushed edition {today} to origin/master.")
+        return True
     except subprocess.CalledProcessError as e:
         print(f"  Git push failed: {e.stderr or e}")
+        return False
 
 
 def cmd_generate(args):
@@ -88,10 +91,24 @@ def cmd_schedule(args):
         now = datetime.now(CST)
         print(f"\n  [{now.strftime('%Y-%m-%d %H:%M %Z')}] Generating today's edition...")
         from generator import build_edition
+        from processor import generate_telegram_digest
+        from telegram_bot import send_edition_to_telegram
         try:
-            build_edition(send_telegram=not args.no_telegram)
+            # Generate WITHOUT telegram — send only after successful push
+            build_edition(send_telegram=False)
             print("  Edition generated successfully.")
-            git_push_edition()
+            pushed = git_push_edition()
+            # Send Telegram only after git push succeeds
+            if pushed and not args.no_telegram:
+                print("  Sending Telegram digest...")
+                date_fancy = datetime.now(CST).strftime("%B %d, %Y")
+                send_edition_to_telegram(
+                    f"New edition is live!\n\nhttps://the-cypher-sentinel.up.railway.app/",
+                    date_fancy,
+                )
+                print("  Telegram sent.")
+            elif not pushed:
+                print("  Skipped Telegram — git push failed.")
         except Exception as e:
             print(f"  Error generating edition: {e}")
 
