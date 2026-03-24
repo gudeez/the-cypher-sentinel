@@ -11,12 +11,20 @@ Strategy:
 Uses a single persistent browser session for all requests.
 """
 import json
+import os
 import re
 import hashlib
 from datetime import datetime, timezone, timedelta
+from pathlib import Path
 from urllib.parse import quote
 from config import SEEN_FILE
 from scrapling.engines._browsers._stealth import StealthySession
+
+# Ensure writable tmp dir for Playwright on read-only filesystems (e.g. Railway)
+_tmp = Path("/app/tmp")
+if not os.environ.get("TMPDIR") and _tmp.parent.exists():
+    _tmp.mkdir(exist_ok=True)
+    os.environ["TMPDIR"] = str(_tmp)
 
 
 # High-signal keyword queries for each vertical
