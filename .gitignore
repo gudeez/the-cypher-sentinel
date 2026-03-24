@@ -4,3 +4,4 @@ __pycache__/
 data/x_cookies.json
 data/seen.json
 .vercel/
+voices/

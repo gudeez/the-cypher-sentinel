@@ -581,8 +581,8 @@
     </script>
 
     <script>
+    let audioEl = null;
     let isPlaying = false;
-    let utterance = null;
 
     function getAllText() {
         const paper = document.querySelector('.paper');
@@ -608,7 +608,7 @@
             const name = card.querySelector('.repo-name');
             const meta = card.querySelector('.repo-meta');
             const descs = card.querySelectorAll('.repo-desc');
-            let text = 'From the Arsenal: ';
+            let text = '';
             if (name) text += name.textContent + '. ';
             if (meta) text += meta.textContent + '. ';
             descs.forEach(d => text += d.textContent + '. ');
@@ -618,41 +618,54 @@
         return sections.join('\n\n');
     }
 
-    function toggleReadAloud() {
+    async function toggleReadAloud() {
         const btn = document.getElementById('readAloudBtn');
 
-        if (isPlaying) {
-            speechSynthesis.cancel();
+        if (isPlaying && audioEl) {
+            audioEl.pause();
+            audioEl = null;
             isPlaying = false;
             btn.textContent = 'Read Aloud';
             btn.classList.remove('playing');
             return;
         }
 
-        const text = getAllText();
-        utterance = new SpeechSynthesisUtterance(text);
-        utterance.rate = 1.0;
-        utterance.pitch = 0.9;
+        btn.textContent = 'Generating...';
+        btn.disabled = true;
 
-        // Prefer a British English voice for the Victorian vibe
-        const voices = speechSynthesis.getVoices();
-        const british = voices.find(v => v.lang === 'en-GB') || voices.find(v => v.lang.startsWith('en'));
-        if (british) utterance.voice = british;
+        try {
+            const text = getAllText();
+            const resp = await fetch('/tts', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({text: text.slice(0, 40000)})
+            });
 
-        utterance.onend = () => {
-            isPlaying = false;
-            btn.textContent = 'Read Aloud';
-            btn.classList.remove('playing');
-        };
+            if (!resp.ok) throw new Error('TTS failed');
 
-        speechSynthesis.speak(utterance);
-        isPlaying = true;
-        btn.textContent = 'Stop Reading';
-        btn.classList.add('playing');
+            const blob = await resp.blob();
+            const url = URL.createObjectURL(blob);
+            audioEl = new Audio(url);
+
+            audioEl.onended = () => {
+                isPlaying = false;
+                btn.textContent = 'Read Aloud';
+                btn.classList.remove('playing');
+                URL.revokeObjectURL(url);
+            };
+
+            audioEl.play();
+            isPlaying = true;
+            btn.textContent = 'Stop Reading';
+            btn.classList.add('playing');
+        } catch (e) {
+            console.error('TTS error:', e);
+            btn.textContent = 'TTS Error';
+            setTimeout(() => { btn.textContent = 'Read Aloud'; }, 2000);
+        } finally {
+            btn.disabled = false;
+        }
     }
-
-    // Preload voices
-    speechSynthesis.getVoices();
     </script>
 
     <script>

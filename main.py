@@ -17,7 +17,7 @@ CST = timezone(timedelta(hours=-6))
 
 
 class NewspaperHandler(http.server.SimpleHTTPRequestHandler):
-    """Serves editions dir, routing / to latest.html."""
+    """Serves editions dir, routing / to latest.html and /tts for audio."""
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(EDITIONS_DIR), **kwargs)
@@ -26,6 +26,44 @@ class NewspaperHandler(http.server.SimpleHTTPRequestHandler):
         if self.path == "/" or self.path == "":
             self.path = "/latest.html"
         super().do_GET()
+
+    def do_POST(self):
+        if self.path == "/tts":
+            self._handle_tts()
+        else:
+            self.send_error(404)
+
+    def _handle_tts(self):
+        import json
+        from tts import synthesize_wav
+
+        content_length = int(self.headers.get("Content-Length", 0))
+        if content_length == 0 or content_length > 50000:
+            self.send_error(400, "Text required (max 50KB)")
+            return
+
+        body = self.rfile.read(content_length)
+        try:
+            data = json.loads(body)
+            text = data.get("text", "").strip()
+        except (json.JSONDecodeError, AttributeError):
+            self.send_error(400, "Invalid JSON")
+            return
+
+        if not text:
+            self.send_error(400, "No text provided")
+            return
+
+        try:
+            wav_bytes = synthesize_wav(text)
+            self.send_response(200)
+            self.send_header("Content-Type", "audio/wav")
+            self.send_header("Content-Length", str(len(wav_bytes)))
+            self.end_headers()
+            self.wfile.write(wav_bytes)
+        except Exception as e:
+            print(f"[TTS] Error: {e}")
+            self.send_error(500, "TTS synthesis failed")
 
 
 def git_push_edition():
